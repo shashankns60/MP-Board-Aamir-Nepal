@@ -1,0 +1,23 @@
+{
+  "css.lint.unknownProperties": "ignore",
+  "css.lint.unknownVendorSpecificProperties": "ignore",
+  "css.lint.propertyIgnoredDueToDisplay": "ignore",
+  "css.lint.vendorPrefix": "ignore",
+  "css.lint.emptyRules": "ignore",
+  "css.lint.duplicateProperties": "ignore",
+  "css.lint.validProperties": [],
+  "css.validate": true,
+  "css.lint.importStatement": "warning",
+  "[css]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
+  "css.customData": [],
+  "css.lint.unknownAtRules": "ignore",
+  "css.lint.hexColorLength": "ignore",
+  "css.lint.argumentsInColorFunction": "ignore",
+  "css.lint.unknownProperties": "ignore",
+  "files.associations": {
+    "*.min.css": "css"
+  }
+}
