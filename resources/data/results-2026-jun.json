@@ -1,0 +1,344 @@
+[
+  {
+    "rollNumber": "201889321",
+    "dateOfBirth": "1996-07-10",
+    "class": "12th",
+    "enrollmentNumber": "A18/632002/150",
+    "studentName": "Kalpana Tamang",
+    "fatherName": "Mangal Bahadur Tamang",
+    "motherName": "Suntali Maya Tamang",
+    "schoolName": "Model H S School TT Nagar, Bhopal",
+    "schoolCode": 632083,
+    "examinationYear": 2018,
+    "subjects": [
+      {
+        "name": "Hindi",
+        "theory": 70,
+        "practical": 0,
+        "total": 70
+      },
+      {
+        "name": "English",
+        "theory": 75,
+        "practical": 0,
+        "total": 75
+      },
+      {
+        "name": "Economics",
+        "theory": 60,
+        "practical": null,
+        "total": 60
+      },
+      {
+        "name": "Business Studies",
+        "theory": 73,
+        "practical": null,
+        "total": 73
+      },
+      {
+        "name": "Accountancy",
+        "theory": 75,
+        "practical": 0,
+        "total": 75
+      },
+      {
+        "name": "Computer Science",
+        "theory": 71,
+        "practical": 0,
+        "total": 71
+      }
+    ],
+    "totalObtained": 424,
+    "maximumMarks": 600,
+    "percentage": 0.7066,
+    "division": "First",
+    "resultStatus": "PASS",
+    "serialNumber": 254698,
+    "issueDate": "22.05.2018"
+  },
+  {
+    "rollNumber": "201889322",
+    "dateOfBirth": "1994-09-30",
+    "class": "12th",
+    "enrollmentNumber": "A18/632002/150",
+    "studentName": "Kalpana Laminchhane Magar",
+    "fatherName": "Bhim Bahadur Magar",
+    "motherName": "Bishnumaya Lamichhane Magar",
+    "schoolName": "Model H S School TT Nagar, Bhopal",
+    "schoolCode": 632083,
+    "examinationYear": 2018,
+    "subjects": [
+      {
+        "name": "Hindi",
+        "theory": 67,
+        "practical": 0,
+        "total": 67
+      },
+      {
+        "name": "English",
+        "theory": 76,
+        "practical": 0,
+        "total": 76
+      },
+      {
+        "name": "Economics",
+        "theory": 61,
+        "practical": null,
+        "total": 61
+      },
+      {
+        "name": "Business Studies",
+        "theory": 71,
+        "practical": null,
+        "total": 71
+      },
+      {
+        "name": "Accountancy",
+        "theory": 69,
+        "practical": 0,
+        "total": 69
+      },
+      {
+        "name": "Computer Science",
+        "theory": 70,
+        "practical": 0,
+        "total": 70
+      }
+    ],
+    "totalObtained": 414,
+    "maximumMarks": 600,
+    "percentage": 0.69,
+    "division": "First",
+    "resultStatus": "PASS",
+    "serialNumber": 254699,
+    "issueDate": "22.05.2018"
+  },
+  {
+    "rollNumber": "2021156570",
+    "dateOfBirth": "2003-09-29",
+    "class": "12th",
+    "enrollmentNumber": "A17/632002/145",
+    "studentName": "Irfan Mohammad Miya",
+    "fatherName": "Kalamuddin Mohammad Miya",
+    "motherName": "Mohasun Nisha Musalman",
+    "schoolName": "Model H S School TT Nagar, Bhopal",
+    "schoolCode": 632002,
+    "examinationYear": 2021,
+    "subjects": [
+      {
+        "name": "Hindi",
+        "theory": 68,
+        "practical": null,
+        "total": 68
+      },
+      {
+        "name": "English",
+        "theory": 72,
+        "practical": 0,
+        "total": 72
+      },
+      {
+        "name": "Mathematics",
+        "theory": 65,
+        "practical": null,
+        "total": 65
+      },
+      {
+        "name": "Physics",
+        "theory": 49,
+        "practical": 23,
+        "total": 72
+      },
+      {
+        "name": "Chemistry",
+        "theory": 45,
+        "practical": 21,
+        "total": 66
+      },
+      {
+        "name": "Biology",
+        "theory": 46,
+        "practical": 26,
+        "total": 72
+      }
+    ],
+    "totalObtained": 415,
+    "maximumMarks": 600,
+    "percentage": 0.6916,
+    "division": "First",
+    "resultStatus": "PASS",
+    "serialNumber": 1603185,
+    "issueDate": "18.05.2021"
+  },
+  {
+    "rollNumber": "144856333",
+    "dateOfBirth": "2003-09-29",
+    "class": "10th",
+    "enrollmentNumber": "A14/632002/57",
+    "studentName": "Irfan Mohammad Miya",
+    "fatherName": "Kalamuddin Mohammad Miya",
+    "motherName": "Mohasun Nisha Musalman",
+    "schoolName": "Model H S School TT Nagar, Bhopal",
+    "schoolCode": 632002,
+    "examinationYear": 2019,
+    "subjects": [
+      {
+        "name": "Hindi",
+        "theory": 73,
+        "practical": null,
+        "total": 73
+      },
+      {
+        "name": "English",
+        "theory": 62,
+        "practical": 0,
+        "total": 62
+      },
+      {
+        "name": "Mathematics",
+        "theory": 65,
+        "practical": null,
+        "total": 65
+      },
+      {
+        "name": "Science",
+        "theory": 46,
+        "practical": 23,
+        "total": 69
+      },
+      {
+        "name": "Social Science",
+        "theory": 70,
+        "practical": 0,
+        "total": 70
+      },
+      {
+        "name": "Computer Science",
+        "theory": 67,
+        "practical": null,
+        "total": 67
+      }
+    ],
+    "totalObtained": 406,
+    "maximumMarks": 600,
+    "percentage": 0.6767,
+    "division": "First",
+    "resultStatus": "PASS",
+    "serialNumber": 1436244,
+    "issueDate": "17.04.2019"
+  },
+  {
+    "rollNumber": "2021156570",
+    "dateOfBirth": "2002-08-17",
+    "class": "12th",
+    "enrollmentNumber": "A17/632002/152",
+    "studentName": "Riyaj Ahmad Nau",
+    "fatherName": "Sarfuddin Nau",
+    "motherName": "Nurjaha Khatun",
+    "schoolName": "Model H S School TT Nagar, Bhopal",
+    "schoolCode": 632002,
+    "examinationYear": 2021,
+    "subjects": [
+      {
+        "name": "Hindi",
+        "theory": 69,
+        "practical": null,
+        "total": 69
+      },
+      {
+        "name": "English",
+        "theory": 74,
+        "practical": 0,
+        "total": 74
+      },
+      {
+        "name": "Mathematics",
+        "theory": 67,
+        "practical": null,
+        "total": 67
+      },
+      {
+        "name": "Physics",
+        "theory": 49,
+        "practical": 23,
+        "total": 72
+      },
+      {
+        "name": "Chemistry",
+        "theory": 45,
+        "practical": 21,
+        "total": 66
+      },
+      {
+        "name": "Biology",
+        "theory": 49,
+        "practical": 25,
+        "total": 73
+      }
+    ],
+    "totalObtained": 420,
+    "maximumMarks": 600,
+    "percentage": 0.7,
+    "division": "First",
+    "resultStatus": "PASS",
+    "serialNumber": 1603185,
+    "issueDate": "18.05.2021"
+  },
+  {
+    "rollNumber": "144856334",
+    "dateOfBirth": "2002-08-17",
+    "class": "10th",
+    "enrollmentNumber": "A14/632002/58",
+    "studentName": "Riyaj Ahmad Nau",
+    "fatherName": "Sarfuddin Nau",
+    "motherName": "Nurjaha Khatun",
+    "schoolName": "Model H S School TT Nagar, Bhopal",
+    "schoolCode": 632002,
+    "examinationYear": 2019,
+    "subjects": [
+      {
+        "name": "Hindi",
+        "theory": 71,
+        "practical": null,
+        "total": 71
+      },
+      {
+        "name": "English",
+        "theory": 73,
+        "practical": 0,
+        "total": 73
+      },
+      {
+        "name": "Mathematics",
+        "theory": 65,
+        "practical": null,
+        "total": 65
+      },
+      {
+        "name": "Science",
+        "theory": 46,
+        "practical": 23,
+        "total": 69
+      },
+      {
+        "name": "Social Science",
+        "theory": 70,
+        "practical": 0,
+        "total": 70
+      },
+      {
+        "name": "Computer Science",
+        "theory": 67,
+        "practical": null,
+        "total": 67
+      }
+    ],
+    "totalObtained": 406,
+    "maximumMarks": 600,
+    "percentage": 0.6767,
+    "division": "First",
+    "resultStatus": "PASS",
+    "serialNumber": 1436245,
+    "issueDate": "17.04.2019"
+  }
+]

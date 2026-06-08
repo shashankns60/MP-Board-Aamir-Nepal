@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MP Board Marksheet 2023 - Radha Yadav</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #eee; display: flex; justify-content: center; padding: 20px; }
+  .certificate {
+    width: 780px;
+    background: #fff;
+    border: 3px double #000;
+    padding: 8px;
+    font-family: 'Times New Roman', serif;
+    font-size: 12px;
+    color: #000;
+  }
+  .inner-border {
+    border: 1.5px solid #000;
+    padding: 6px 12px;
+  }
+  .header-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 5px;
+  }
+  .hindi-title { font-size: 19px; font-weight: bold; text-align: center; }
+  .english-title { font-size: 13px; font-weight: bold; text-align: center; letter-spacing: 0.5px; }
+  .sub-title { font-size: 11.5px; text-align: center; font-weight: bold; }
+  .divider { border-top: 1.5px solid #000; margin: 4px 0; }
+  .divider-thin { border-top: 0.5px solid #000; margin: 3px 0; }
+  .month-sno-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 4px 0;
+    align-items: center;
+  }
+  .certificate-title-center {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 4px 0 2px;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.4fr 1fr 1fr;
+    border: 1px solid #000;
+    margin: 4px 0;
+    font-size: 10px;
+  }
+  .info-grid-cell {
+    border-right: 1px solid #000;
+    padding: 2px 4px;
+    text-align: center;
+  }
+  .info-grid-cell:last-child { border-right: none; }
+  .info-grid-label { font-size: 9px; color: #333; }
+  .info-grid-value { font-weight: bold; font-size: 11px; }
+  .certified-row {
+    text-align: center;
+    font-size: 11px;
+    margin: 3px 0;
+    font-style: italic;
+  }
+  .info-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 4px 0;
+    gap: 8px;
+  }
+  .info-left { flex: 1; }
+  .photo-box {
+    width: 88px;
+    height: 108px;
+    border: 1.5px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #ddd;
+  }
+  .student-name-row {
+    display: flex;
+    align-items: flex-start;
+    margin: 3px 0;
+    gap: 8px;
+  }
+  .student-label { font-size: 10.5px; min-width: 120px; }
+  .student-name { font-size: 15px; font-weight: bold; flex: 1; text-transform: uppercase; }
+  .student-gender { font-size: 10px; text-align: right; min-width: 70px; }
+  .field-row { display: flex; align-items: baseline; margin: 3px 0; font-size: 11px; }
+  .field-label { min-width: 200px; font-size: 10.5px; }
+  .field-colon { margin: 0 4px; }
+  .field-value { font-weight: bold; text-transform: uppercase; }
+  .notice-text { font-size: 9.5px; margin: 4px 0; line-height: 1.5; }
+  table.marks-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5px;
+    margin: 4px 0;
+  }
+  table.marks-table th, table.marks-table td {
+    border: 1px solid #000;
+    padding: 2px 4px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  table.marks-table th { font-size: 9.5px; font-weight: bold; }
+  .subject-col { text-align: left !important; padding-left: 6px !important; }
+  .grand-total-row td { font-weight: bold; }
+  .words-section { font-size: 11px; margin: 4px 0; }
+  .result-row { font-size: 11px; margin: 3px 0; }
+  .activities-section {
+    font-size: 9.5px;
+    margin: 3px 0;
+    border: 1px solid #000;
+    padding: 3px 6px;
+  }
+  .activities-title { font-weight: bold; font-size: 10px; margin-bottom: 2px; }
+  .activity-row { display: flex; align-items: baseline; gap: 6px; margin: 1px 0; }
+  .footer-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 8px;
+    font-size: 10px;
+  }
+  .sign-box { border-top: 1px solid #000; margin-top: 22px; padding-top: 2px; font-size: 9.5px; }
+</style>
+</head>
+<body>
+<div class="certificate">
+  <div class="inner-border">
+
+    <!-- HEADER -->
+    <div class="header-main">
+      <div style="text-align:center; width:78px;">
+        <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="34" fill="none" stroke="#8B0000" stroke-width="2.5"/>
+          <circle cx="36" cy="36" r="28" fill="none" stroke="#8B0000" stroke-width="1"/>
+          <text x="36" y="21" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#8B0000" font-family="serif">माध्यमिक</text>
+          <text x="36" y="31" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#8B0000" font-family="serif">शिक्षा मंडल</text>
+          <text x="36" y="41" text-anchor="middle" font-size="7" fill="#8B0000" font-family="serif">म.प्र. भोपाल</text>
+          <circle cx="36" cy="55" r="9" fill="#8B0000"/>
+          <text x="36" y="58.5" text-anchor="middle" font-size="7.5" font-weight="bold" fill="white" font-family="sans-serif">MP</text>
+        </svg>
+      </div>
+      <div style="flex:1; text-align:center;">
+        <div class="hindi-title">माध्यमिक शिक्षा मण्डल, मध्यप्रदेश, भोपाल</div>
+        <div class="english-title">BOARD OF SECONDARY EDUCATION, MADHYA PRADESH, BHOPAL</div>
+        <div class="sub-title">हायर सेकेण्डरी स्कूल सर्टिफिकेट परीक्षा (10+2) 2023</div>
+        <div class="sub-title" style="font-size:10.5px; font-weight:normal;">HIGHER SECONDARY SCHOOL CERTIFICATE EXAMINATION (10+2) 2023</div>
+      </div>
+      <div style="text-align:center; width:78px;">
+        <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="34" fill="none" stroke="#8B0000" stroke-width="2.5"/>
+          <circle cx="36" cy="36" r="28" fill="none" stroke="#8B0000" stroke-width="1"/>
+          <text x="36" y="21" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#8B0000" font-family="serif">माध्यमिक</text>
+          <text x="36" y="31" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#8B0000" font-family="serif">शिक्षा मंडल</text>
+          <text x="36" y="41" text-anchor="middle" font-size="7" fill="#8B0000" font-family="serif">म.प्र. भोपाल</text>
+          <circle cx="36" cy="55" r="9" fill="#8B0000"/>
+          <text x="36" y="58.5" text-anchor="middle" font-size="7.5" font-weight="bold" fill="white" font-family="sans-serif">MP</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="month-sno-row">
+      <span>MARCH - 2023</span>
+      <span style="font-size:13px; text-align:center;">अंकसूची सह-प्रमाणपत्र &nbsp;&nbsp;&nbsp; S.NO. / क्र.सं. &nbsp; <b style="font-size:15px;">0762978</b></span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="certificate-title-center">MARKSHEET CUM-CERTIFICATE</div>
+
+    <div class="divider-thin"></div>
+
+    <!-- CENTRE / SCHOOL INFO GRID -->
+    <div class="info-grid">
+      <div class="info-grid-cell">
+        <div class="info-grid-label">केन्द्र क्रमांक<br>CENTRE NO.</div>
+        <div class="info-grid-value">632370</div>
+      </div>
+      <div class="info-grid-cell">
+        <div class="info-grid-label">विद्यालय क्र.<br>SCHOOL NO.</div>
+        <div class="info-grid-value">632224</div>
+      </div>
+      <div class="info-grid-cell">
+        <div class="info-grid-label">नामांकन क्रमांक<br>ENROLLMENT NUMBER</div>
+        <div class="info-grid-value">A16/632224/028</div>
+      </div>
+      <div class="info-grid-cell">
+        <div class="info-grid-label">नियमित/स्वाध्यायी<br>REGULAR / PRIVATE</div>
+        <div class="info-grid-value">REGULAR</div>
+      </div>
+      <div class="info-grid-cell">
+        <div class="info-grid-label">अनुक्रमांक<br>ROLL NUMBER</div>
+        <div class="info-grid-value">376351990</div>
+      </div>
+    </div>
+
+    <div class="certified-row">CERTIFIED THAT</div>
+
+    <!-- STUDENT INFO + PHOTO -->
+    <div class="info-section">
+      <div class="info-left">
+        <div class="student-name-row">
+          <div class="student-label">
+            श्री / सुश्री<br>
+            <span style="font-size:9.5px;">SHRI / SUSHRI</span>
+          </div>
+          <div class="student-name">RADHA YADAV</div>
+          <div class="student-gender">
+            लिंग<br>GENDER<br><b>FEMALE</b>
+          </div>
+        </div>
+        <div class="field-row">
+          <span class="field-label">पिता / पति का नाम<br><span style="font-size:9.5px;">FATHER'S / HUSBAND'S NAME IS</span></span>
+          <span class="field-colon">:</span>
+          <span class="field-value">RAMKUMAR YADAV</span>
+        </div>
+        <div class="field-row">
+          <span class="field-label">माता का नाम<br><span style="font-size:9.5px;">AND MOTHER'S NAME IS</span></span>
+          <span class="field-colon">:</span>
+          <span class="field-value">MEERA BAI</span>
+          <span style="margin-left:12px; font-size:13px; font-weight:bold;">है</span>
+        </div>
+      </div>
+      <div class="photo-box">
+        <svg width="60" height="80" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="80" fill="#ccc"/>
+          <circle cx="30" cy="25" r="16" fill="#999"/>
+          <ellipse cx="30" cy="65" rx="26" ry="20" fill="#999"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- NOTICE -->
+    <div class="notice-text">
+      इस छात्र की उक्त परीक्षाफल उच्चतर माध्यमिक प्रमाण पत्र परीक्षा वर्ष 2019 से लागू संशोधित पाठ्यक्रम के आधार पर <b>शैक्षणिक वर्ष</b> पूर्व<br>
+      THE HIGHER SECONDARY SCHOOL CERTIFICATE EXAMINATION OF THE BOARD IN THE YEAR 2019 FROM SCHOOL / CENTRE<br>
+      AND SUBJECT WISE MARKS OBTAINED ARE AS UNDER:
+    </div>
+    <div style="font-size:10px; font-weight:bold; margin:2px 0;">AZAD HIGH SCHOOL, SONYA GANDHI COLONY, BHOPAL</div>
+
+    <div class="divider-thin"></div>
+
+    <!-- MARKS TABLE -->
+    <table class="marks-table">
+      <thead>
+        <tr>
+          <th rowspan="2" class="subject-col" style="width:145px;">विषय<br>SUBJECTS</th>
+          <th rowspan="2" style="width:55px;">अधिकतम अंक<br>MAXIMUM MARKS</th>
+          <th colspan="3">सैद्धान्तिक / THEORY</th>
+          <th colspan="3">प्रयोगात्मक / PRACTICAL</th>
+          <th rowspan="2" style="width:55px;">प्राप्तांक<br>MARKS OBTAINED</th>
+          <th rowspan="2" style="width:45px;">विभाग<br>DIVISION</th>
+        </tr>
+        <tr>
+          <th style="width:48px; font-size:9px;">अधिकतम अंक<br>MAXIMUM MARKS</th>
+          <th style="width:48px; font-size:9px;">न्यूनतम अंक<br>MINIMUM MARKS</th>
+          <th style="width:48px; font-size:9px;">प्राप्तांक<br>MARKS OBTAINED</th>
+          <th style="width:48px; font-size:9px;">अधिकतम अंक<br>MAXIMUM MARKS</th>
+          <th style="width:48px; font-size:9px;">न्यूनतम अंक<br>MINIMUM MARKS</th>
+          <th style="width:48px; font-size:9px;">प्राप्तांक<br>MARKS OBTAINED</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="subject-col">HINDI (SPECIAL)</td>
+          <td>100</td>
+          <td>100</td>
+          <td>33</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>064</td>
+          <td>064</td>
+        </tr>
+        <tr>
+          <td class="subject-col">ENGLISH (GENERAL)</td>
+          <td>100</td>
+          <td>-</td>
+          <td>100</td>
+          <td>33</td>
+          <td>-</td>
+          <td>-</td>
+          <td>057</td>
+          <td>-</td>
+          <td>057</td>
+        </tr>
+        <tr>
+          <td class="subject-col">MATHEMATICS</td>
+          <td>70</td>
+          <td>30</td>
+          <td>100</td>
+          <td>33</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+          <td>059</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td class="subject-col">PHYSICS</td>
+          <td>70</td>
+          <td>30</td>
+          <td>100</td>
+          <td>33</td>
+          <td>10</td>
+          <td>027</td>
+          <td>022</td>
+          <td>049</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td class="subject-col">CHEMISTRY</td>
+          <td>70</td>
+          <td>30</td>
+          <td>100</td>
+          <td>33</td>
+          <td>10</td>
+          <td>028</td>
+          <td>026</td>
+          <td>054</td>
+          <td>-</td>
+        </tr>
+        <tr class="grand-total-row">
+          <td class="subject-col" colspan="8" style="text-align:right; font-weight:bold; padding-right:8px;">महायोग / GRAND TOTAL</td>
+          <td>800</td>
+          <td>284</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider-thin"></div>
+
+    <!-- GRAND TOTAL IN WORDS -->
+    <div class="words-section">
+      <div style="display:flex; gap:8px; align-items:baseline; margin-bottom:2px;">
+        <span style="min-width:150px;">महायोग शब्दों में :</span>
+        <span style="font-weight:bold;">Three Hundred Thirty Four</span>
+      </div>
+      <div style="display:flex; gap:8px; align-items:baseline;">
+        <span style="min-width:150px;">GRAND TOTAL IN WORDS :</span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="divider-thin"></div>
+
+    <!-- RESULT -->
+    <div class="result-row">
+      <b>परिणाम / RESULT :</b> &nbsp; PASS IN First Division
+    </div>
+
+    <div class="divider-thin"></div>
+
+    <!-- ACTIVITIES -->
+    <div class="activities-section">
+      <div class="activities-title">अतिरिक्त विषय / ADDITIONAL SUBJECT</div>
+      <div class="activity-row">
+        <span style="min-width:280px;">Participated in N.C.C. or Certificate Course and obtained Grade :</span>
+        <span style="font-weight:bold;">AB</span>
+      </div>
+      <div class="activity-row">
+        <span style="min-width:280px;">Participated in N.S.S. and obtained Grade :</span>
+        <span style="font-weight:bold;"></span>
+      </div>
+      <div class="activity-row">
+        <span style="min-width:280px;">Environmental Education &amp; Disaster Management - GRADE :</span>
+        <span style="font-weight:bold;"></span>
+      </div>
+      <div class="activity-row">
+        <span style="min-width:280px;">General Study (Social Science) - GRADE :</span>
+        <span style="font-weight:bold;">AA</span>
+      </div>
+      <div style="font-size:9px; margin-top:2px; font-style:italic;">
+        इस परीक्षा के लिए रजिस्टर्ड उम्मीदवार ने वर्ष 18-05-2023 के लिए Sth. For Regular Candidates only
+      </div>
+      <div style="font-size:9px; margin-top:1px;">Participated in Athletic, Sports, Cultural activities etc. at STATE/NATIONAL/INTERNATIONAL LEVEL GAMES</div>
+      <div style="font-size:9px; font-weight:bold; margin-top:1px;">Date 18-05-2023</div>
+    </div>
+
+    <div class="divider-thin"></div>
+
+    <!-- FOOTER SIGNATURES -->
+    <div class="footer-section">
+      <div style="flex:1;">
+        <div style="font-size:9.5px; line-height:1.5;">
+          Azad High School, Sonya Gandhinagar, Bhopal For Regular Candidates only<br>
+          नाम स्थान व हस्ताक्षर प्रधानाचार्य / Signature &amp; Stamp
+        </div>
+        <div class="sign-box">
+          Principal Azad High School,<br>Sonya Gandhinagar, Bhopal
+        </div>
+      </div>
+      <div style="text-align:right; min-width:140px;">
+        <div style="font-size:9.5px; margin-bottom:2px;">सचिव / SECRETARY</div>
+        <div class="sign-box" style="text-align:center;">सचिव / SECRETARY</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
