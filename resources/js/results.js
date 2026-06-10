@@ -131,12 +131,154 @@
     return "JUNE " + (student.examinationYear || "2026");
   }
 
-  function formatDobLong(value) {
-    var display = formatDobForDisplay(value);
-    if (!display || display === "-") {
-      return "-";
+  var MONTH_NAMES = [
+    "JANUARY",
+    "FEBRUARY",
+    "MARCH",
+    "APRIL",
+    "MAY",
+    "JUNE",
+    "JULY",
+    "AUGUST",
+    "SEPTEMBER",
+    "OCTOBER",
+    "NOVEMBER",
+    "DECEMBER",
+  ];
+
+  function parseDobParts(value) {
+    if (!value) {
+      return null;
     }
-    return display;
+    var text = String(value).trim();
+    var iso = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (iso) {
+      return {
+        day: Number(iso[3]),
+        month: Number(iso[2]),
+        year: Number(iso[1]),
+      };
+    }
+    var dotted = text.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+    if (dotted) {
+      return {
+        day: Number(dotted[1]),
+        month: Number(dotted[2]),
+        year: Number(dotted[3]),
+      };
+    }
+    return null;
+  }
+
+  function getOrdinalSuffix(day) {
+    var num = Number(day);
+    if (num >= 11 && num <= 13) {
+      return "TH";
+    }
+    switch (num % 10) {
+      case 1:
+        return "ST";
+      case 2:
+        return "ND";
+      case 3:
+        return "RD";
+      default:
+        return "TH";
+    }
+  }
+
+  function yearToWordsUpper(year) {
+    var ones = [
+      "",
+      "ONE",
+      "TWO",
+      "THREE",
+      "FOUR",
+      "FIVE",
+      "SIX",
+      "SEVEN",
+      "EIGHT",
+      "NINE",
+      "TEN",
+      "ELEVEN",
+      "TWELVE",
+      "THIRTEEN",
+      "FOURTEEN",
+      "FIFTEEN",
+      "SIXTEEN",
+      "SEVENTEEN",
+      "EIGHTEEN",
+      "NINETEEN",
+    ];
+    var tens = [
+      "",
+      "",
+      "TWENTY",
+      "THIRTY",
+      "FORTY",
+      "FIFTY",
+      "SIXTY",
+      "SEVENTY",
+      "EIGHTY",
+      "NINETY",
+    ];
+
+    function belowThousand(n) {
+      if (n < 20) {
+        return ones[n];
+      }
+      if (n < 100) {
+        return tens[Math.floor(n / 10)] + (n % 10 ? " " + ones[n % 10] : "");
+      }
+      return (
+        ones[Math.floor(n / 100)] +
+        " HUNDRED" +
+        (n % 100 ? " " + belowThousand(n % 100) : "")
+      );
+    }
+
+    year = Math.floor(Number(year));
+    if (!year || isNaN(year)) {
+      return "";
+    }
+    if (year >= 1000) {
+      var thousands = Math.floor(year / 1000);
+      var remainder = year % 1000;
+      var parts = [belowThousand(thousands) + " THOUSAND"];
+      if (remainder > 0) {
+        parts.push(belowThousand(remainder));
+      }
+      return parts.join(" ").replace(/\bNINETY\b/g, "NINTY");
+    }
+    return belowThousand(year).replace(/\bNINETY\b/g, "NINTY");
+  }
+
+  function formatDobLongHtml(value) {
+    var parts = parseDobParts(value);
+    if (!parts || !parts.day || !parts.month || !parts.year) {
+      return escapeHtml(formatDobForDisplay(value) || "-");
+    }
+
+    var numeric =
+      String(parts.day).padStart(2, "0") +
+      "." +
+      String(parts.month).padStart(2, "0") +
+      "." +
+      parts.year;
+    var monthName = MONTH_NAMES[parts.month - 1] || "";
+    var yearWords = yearToWordsUpper(parts.year);
+
+    return (
+      numeric +
+      " - " +
+      parts.day +
+      "<sup>" +
+      getOrdinalSuffix(parts.day) +
+      "</sup> " +
+      monthName +
+      " " +
+      yearWords
+    );
   }
 
   function buildSubjectRows(subjects) {
@@ -244,7 +386,7 @@
       "</div></div>" +
       '<div class="ms-person-row" style="align-items:flex-start;"><div class="ms-person-label">तथा जन्म तिथि<span class="ms-person-label-en">AND DATE OF BIRTH IS</span></div>' +
       '<div class="ms-person-val" style="font-size:10px; line-height:1.4;">' +
-      escapeHtml(formatDobLong(student.dateOfBirth)) +
+      formatDobLongHtml(student.dateOfBirth) +
       "</div></div></div></div>" +
       '<div class="ms-appeared-text">' +
       '<span style="font-size:9.5px;">इस मण्डल की हाईस्कूल सर्टिफिकेट परीक्षा वर्ष - ' +
