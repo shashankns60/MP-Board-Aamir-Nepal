@@ -258,15 +258,15 @@
       escapeHtml(String(student.schoolName || "-").toUpperCase()) +
       "</div>" +
       '<table class="ms-marks-table"><thead><tr>' +
-      '<th rowspan="2" style="width:160px; text-align:left; padding-left:8px; vertical-align:middle;"><span class="th-hi">विषय</span> / SUBJECTS</th>' +
-      '<th rowspan="2" style="width:55px;"><span class="th-hi">अधिकतम अंक</span><br>MAX MARKS</th>' +
-      '<th rowspan="2" style="width:45px;"><span class="th-hi">न्यूनतम सैद्धांतिक</span><br>MIN THEORY</th>' +
-      '<th rowspan="2" style="width:45px;"><span class="th-hi">न्यूनतम प्रायोगिक</span><br>MIN PRACTICAL</th>' +
-      '<th colspan="3" style="background:#d4c888;"><span class="th-hi">प्राप्तांक / MARKS OBTAINED</span></th>' +
-      '<th rowspan="2" style="width:55px;"><span class="th-hi">विशेष</span><br>REMARKS</th></tr><tr>' +
-      '<th style="width:55px; background:#e0d898;"><span class="th-hi">सैद्धांतिक</span><br>THEORY</th>' +
-      '<th style="width:55px; background:#e0d898;"><span class="th-hi">प्रायोगिक</span><br>PRACTICAL</th>' +
-      '<th style="width:45px; background:#e0d898;"><span class="th-hi">योग</span><br>TOTAL</th></tr></thead><tbody>' +
+      '<th rowspan="2" style="width:160px; text-align:left; padding-left:8px; vertical-align:middle;"><div class="ms-th-label" style="align-items:flex-start;"><span class="th-hi">विषय</span><span class="th-en">/ SUBJECTS</span></div></th>' +
+      '<th rowspan="2" style="width:55px;"><div class="ms-th-label"><span class="th-hi">अधिकतम अंक</span><span class="th-en">MAX MARKS</span></div></th>' +
+      '<th rowspan="2" style="width:45px;"><div class="ms-th-label"><span class="th-hi">न्यूनतम सैद्धांतिक</span><span class="th-en">MIN THEORY</span></div></th>' +
+      '<th rowspan="2" style="width:45px;"><div class="ms-th-label"><span class="th-hi">न्यूनतम प्रायोगिक</span><span class="th-en">MIN PRACTICAL</span></div></th>' +
+      '<th colspan="3" style="background:#d4c888;"><div class="ms-th-label"><span class="th-hi">प्राप्तांक</span><span class="th-en">/ MARKS OBTAINED</span></div></th>' +
+      '<th rowspan="2" style="width:55px;"><div class="ms-th-label"><span class="th-hi">विशेष</span><span class="th-en">REMARKS</span></div></th></tr><tr>' +
+      '<th style="width:55px; background:#e0d898;"><div class="ms-th-label"><span class="th-hi">सैद्धांतिक</span><span class="th-en">THEORY</span></div></th>' +
+      '<th style="width:55px; background:#e0d898;"><div class="ms-th-label"><span class="th-hi">प्रायोगिक</span><span class="th-en">PRACTICAL</span></div></th>' +
+      '<th style="width:45px; background:#e0d898;"><div class="ms-th-label"><span class="th-hi">योग</span><span class="th-en">TOTAL</span></div></th></tr></thead><tbody>' +
       buildSubjectRows(student.subjects || []) +
       '<tr class="ms-grand-total-row"><td colspan="1" style="text-align:right; padding-right:8px; font-family:\'Noto Sans Devanagari\',sans-serif;"></td>' +
       '<td style="font-weight:700;">' +

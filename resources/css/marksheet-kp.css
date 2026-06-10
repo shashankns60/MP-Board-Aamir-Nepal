@@ -63,4 +63,21 @@
   .ms-date-stamp { font-size: 10px; font-weight: 700; color: #000; }
   .ms-bottom-ids { display: flex; justify-content: space-between; padding: 3px 8px; border-top: 1px solid #ccc; font-size: 10px; font-weight: 700; background: #f5f0e0; }
   .ms-regular-note { font-size: 9px; color: #444; margin-bottom: 3px; font-style: italic; }
-  table.ms-marks-table .th-hi { font-family: 'Noto Sans Devanagari', sans-serif; display: block; font-size: 8.5px; }
+  table.ms-marks-table .th-hi {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    display: block;
+    font-size: 8.5px;
+    line-height: 3.1;
+    margin: 0;
+  }
+  table.ms-marks-table .th-en { display: block; font-size: 8.5px; line-height: 1.1; margin: 0; }
+  table.ms-marks-table thead th .ms-th-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    line-height: 1.1;
+  }
+  table.ms-marks-table thead th[rowspan="2"] { vertical-align: middle; }
+  table.ms-marks-table thead th { line-height: 1.1; padding: 2px 3px; }
