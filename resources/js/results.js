@@ -131,6 +131,51 @@
     return "JUNE " + (student.examinationYear || "2026");
   }
 
+  function getStudentPercentage(student) {
+    if (
+      student.percentage !== null &&
+      student.percentage !== undefined &&
+      student.percentage !== ""
+    ) {
+      var pct = Number(student.percentage);
+      if (!isNaN(pct)) {
+        return pct <= 1 ? pct * 100 : pct;
+      }
+    }
+
+    var obtained = Number(student.totalObtained);
+    var maximum = Number(student.maximumMarks);
+    if (!isNaN(obtained) && !isNaN(maximum) && maximum > 0) {
+      return (obtained / maximum) * 100;
+    }
+
+    return null;
+  }
+
+  function calculateGrade(student) {
+    var pct = getStudentPercentage(student);
+    if (pct === null || isNaN(pct)) {
+      return "-";
+    }
+
+    if (pct >= 81) {
+      return "A+";
+    }
+    if (pct >= 60) {
+      return "A";
+    }
+    if (pct >= 41) {
+      return "B";
+    }
+    if (pct >= 31) {
+      return "C";
+    }
+    if (pct >= 1) {
+      return "D";
+    }
+    return "-";
+  }
+
   var MONTH_NAMES = [
     "JANUARY",
     "FEBRUARY",
@@ -431,7 +476,9 @@
       '<div class="ms-env-row"><div class="ms-env-text">' +
       '<div class="ms-bi-stack" style="font-size:9.5px; margin-bottom:3px;"><span class="ms-bi-hi">पर्यावरण शिक्षा एवं आपदा प्रबंधन</span><span class="ms-bi-en" style="font-size:9px;">Environment Education &amp; Disaster Management</span></div>' +
       '<div class="ms-bi-stack" style="font-size:9px; color:#8B0000;"><span class="ms-bi-hi">+ राज्य/राष्ट्रीय/अन्तरार्ष्ट्रीय स्तरपर खेलने पर प्राप्त बोनस अंक</span><span class="ms-bi-en" style="font-size:8.5px;">AWARDED BONUS MARKS FOR PARTICIPATION IN STATE / NATIONAL / INTERNATIONAL LEVEL GAMES: <strong>-</strong></span></div></div>' +
-      '<div style="text-align:center;"><div class="ms-bi-stack" style="font-weight:700;"><span class="ms-bi-hi" style="font-size:10px;">ग्रेड</span><span class="ms-bi-en" style="font-size:9px;">GRADE</span></div><div class="ms-grade-box">-</div></div></div>' +
+      '<div style="text-align:center;"><div class="ms-bi-stack" style="font-weight:700;"><span class="ms-bi-hi" style="font-size:10px;">ग्रेड</span><span class="ms-bi-en" style="font-size:9px;">GRADE</span></div><div class="ms-grade-box">' +
+      escapeHtml(calculateGrade(student)) +
+      "</div></div></div>" +
       '<div class="ms-bottom-section"><div class="ms-bottom-left">' +
       '<div class="ms-date-stamp">' +
       displayValue(student.issueDate, "-") +
