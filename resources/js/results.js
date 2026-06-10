@@ -112,6 +112,7 @@
   }
 
   var LOGO_SRC = "resources/images/mp-board-marksheet-logo.png";
+  var SECRETARY_SIGNATURE_SRC = "resources/images/secretary-signature.png?v=2";
 
   function getExamTitles(student) {
     var year = student.examinationYear || "2026";
@@ -490,8 +491,11 @@
       '<div class="ms-bottom-right" style="display:flex; flex-direction:column; justify-content:space-between;"><div class="ms-bi-stack" style="color:#333;">' +
       '<span class="ms-bi-hi" style="font-size:9px; text-align:center;">प्राचार्य के स्याही से हस्ताक्षर एवं पद मुद्रा</span>' +
       '<span class="ms-bi-en" style="font-size:8.5px; text-align:center;">SEAL AND SIGNATURE OF THE PRINCIPAL</span></div>' +
-      '<div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">' +
-      '<div style="text-align:center; font-family:\'Noto Sans Devanagari\',sans-serif; font-size:11px; font-weight:700; border-top:1px solid #000; padding-top:3px;">सचिव/ SECRETARY</div></div></div></div>' +
+      '<div class="ms-secretary-block">' +
+      '<img src="' +
+      SECRETARY_SIGNATURE_SRC +
+      '" alt="Secretary signature" class="ms-secretary-sign">' +
+      '<div class="ms-secretary-label">सचिव/ SECRETARY</div></div></div></div>' +
       '<div class="ms-bottom-ids"><span>' +
       displayValue(student.serialNumber, "-") +
       "</span><span>" +
