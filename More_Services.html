@@ -47,6 +47,75 @@
             margin-top: 10px !important;
         }
     </style>
+    <style>
+        .academics-busy-link {
+            cursor: pointer;
+            color: inherit;
+        }
+        .boxtex789 .academics-busy-link {
+            display: block;
+        }
+        .academics-busy-link:hover,
+        .academics-busy-link:focus {
+            text-decoration: underline;
+            outline: none;
+        }
+        .academics-busy-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .academics-busy-modal[hidden] {
+            display: none !important;
+        }
+        .academics-busy-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+        }
+        .academics-busy-card {
+            position: relative;
+            max-width: 560px;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #d9dee3;
+            border-top: 4px solid #8b0000;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px;
+            text-align: center;
+        }
+        .academics-busy-card h1 {
+            font-size: 24px;
+            margin: 0 0 12px;
+            color: #8b0000;
+        }
+        .academics-busy-card h2 {
+            font-size: 18px;
+            margin: 0 0 18px;
+            font-family: "Noto Sans Devanagari", Arial, sans-serif;
+        }
+        .academics-busy-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .academics-busy-close {
+            margin-top: 18px;
+            padding: 10px 22px;
+            background: #8b0000;
+            color: #fff;
+            border: 0;
+            border-radius: 3px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 <body>
     <!-- ==============================================
@@ -140,14 +209,14 @@
                 <div class="col-md-3">
 
                     <div class="boxtex789 text-center">
-                        <a href="property2023-24.html">
+                        <span class="academics-busy-link" role="button" tabindex="0">
                             <i class="fa fa-list-alt faficon text-danger fa-4x"></i>
                             <br>
                             <br>
                             <span class="text-primary" style="font-size:20px;">
                                 अचल संपत्ति विवरण <br /> [2024]
                             </span>
-                        </a>
+                        </span>
                     </div>
 
                 </div>
@@ -155,14 +224,14 @@
                 <div class="col-md-3">
 
                     <div class="boxtex789 text-center">
-                        <a href="Answer_Sheet_of_Toppers.html">
+                        <span class="academics-busy-link" role="button" tabindex="0">
                             <i class="fa fa-book faficon text-danger fa-4x"></i>
                             <br>
                             <br>
                             <span class="text-primary" style="font-size:20px;">
                                 मेधावी विद्यार्थियों की उत्तर पुस्तिकाएं
                             </span>
-                        </a>
+                        </span>
                     </div>
 
                 </div>
@@ -170,14 +239,14 @@
                 <div class="col-md-3">
 
                     <div class="boxtex789 text-center">
-                        <a href="ttable.html">
+                        <span class="academics-busy-link" role="button" tabindex="0">
                             <i class="fa fa-calendar faficon text-danger fa-4x"></i>
                             <br>
                             <br>
                             <span class="text-primary" style="font-size:20px;">
                                 Examination Time table
                             </span>
-                        </a>
+                        </span>
                     </div>
 
                 </div>
@@ -186,28 +255,28 @@
                     <div class="col-md-3">
 
                         <div class="boxtex789 text-center">
-                            <a href="ModelPaper-2.html">
+                            <span class="academics-busy-link" role="button" tabindex="0">
                                 <i class="fa fa-list-alt faficon text-danger fa-4x"></i>
                                 <br>
                                 <br>
                                 <span class="text-primary" style="font-size:20px;">
                                     Model Paper
                                 </span>
-                            </a>
+                            </span>
                         </div>
 
                     </div>
                     <div class="col-md-3">
 
                         <div class="boxtex789 text-center">
-                            <a href="rec_schools.html">
+                            <span class="academics-busy-link" role="button" tabindex="0">
                                 <i class="fa fa-list-alt faficon text-danger fa-4x"></i>
                                 <br>
                                 <br>
                                 <span class="text-primary" style="font-size:20px;">
                                     Recognized D.El.Ed/D.P.S.E. institutes
                                 </span>
-                            </a>
+                            </span>
                         </div>
 
                     </div>
@@ -222,6 +291,18 @@
     <!-- ==============================================
     ** Footer **
     =================================================== -->
+    
+    <div id="academicsServerBusy" class="academics-busy-modal" hidden>
+        <div class="academics-busy-overlay" data-close-busy="1"></div>
+        <div class="academics-busy-card" role="dialog" aria-modal="true" aria-labelledby="academicsBusyTitle">
+            <h1 id="academicsBusyTitle">Under Maintenance</h1>
+            <h2>रखरखाव जारी है</h2>
+            <p>These links are currently under maintenance. Please try again after some time.</p>
+            <p>ये लिंक वर्तमान में रखरखाव में हैं। कृपया कुछ समय बाद पुनः प्रयास करें।</p>
+            <button type="button" class="academics-busy-close" data-close-busy="1">Close / बंद करें</button>
+        </div>
+    </div>
+
     <footer class="footer">
 
         <!-- End Footer Top -->
@@ -264,7 +345,6 @@
                                 M.P. Board of Secondary Education
                                 Shivaji Nagar, Bhopal - 462011 <br />
                                 Phone No:0755- 2551166-71   <br />
-                                WEBSITE: www.mpbse.org <br />
                                 E-Mail: mpbse[at][dot]org
                             </p>
 
@@ -291,6 +371,49 @@
     <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
     <!-- Modernizr -->
     <script src="https://cdn.jsdelivr.net/npm/modernizr@3.11.8/modernizr.min.js"></script>
+
+    <script>
+        (function () {
+            function showBusyModal(event) {
+                if (event) {
+                    event.preventDefault();
+                }
+                var modal = document.getElementById("academicsServerBusy");
+                if (modal) {
+                    modal.hidden = false;
+                }
+            }
+
+            function hideBusyModal() {
+                var modal = document.getElementById("academicsServerBusy");
+                if (modal) {
+                    modal.hidden = true;
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll(".academics-busy-link").forEach(function (item) {
+                    item.addEventListener("click", showBusyModal);
+                    item.addEventListener("keydown", function (event) {
+                        if (event.key === "Enter" || event.key === " ") {
+                            showBusyModal(event);
+                        }
+                    });
+                });
+
+                document.querySelectorAll("[data-close-busy]").forEach(function (item) {
+                    item.addEventListener("click", hideBusyModal);
+                });
+
+                document.addEventListener("keydown", function (event) {
+                    if (event.key === "Escape") {
+                        hideBusyModal();
+                    }
+                });
+            });
+        })();
+    </script>
+
 </body>
 <!-- Mirrored from protechtheme.com/edumart/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 03 Oct 2020 05:33:27 GMT -->
 

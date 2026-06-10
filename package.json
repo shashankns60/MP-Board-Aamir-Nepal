@@ -1,0 +1,11 @@
+{
+  "name": "mpbse-org",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "stubs": "python scripts/create_missing_stubs.py"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

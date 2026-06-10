@@ -42,6 +42,72 @@
     <link href="resources/css/animate.css" rel="stylesheet">
     <link href="resources/css/custom.css" rel="stylesheet">
 
+    <style>
+        .academics-busy-link {
+            cursor: pointer;
+            color: inherit;
+        }
+        .academics-busy-link:hover,
+        .academics-busy-link:focus {
+            text-decoration: underline;
+            outline: none;
+        }
+        .academics-busy-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .academics-busy-modal[hidden] {
+            display: none !important;
+        }
+        .academics-busy-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+        }
+        .academics-busy-card {
+            position: relative;
+            max-width: 560px;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #d9dee3;
+            border-top: 4px solid #8b0000;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px;
+            text-align: center;
+        }
+        .academics-busy-card h1 {
+            font-size: 24px;
+            margin: 0 0 12px;
+            color: #8b0000;
+        }
+        .academics-busy-card h2 {
+            font-size: 18px;
+            margin: 0 0 18px;
+            font-family: "Noto Sans Devanagari", Arial, sans-serif;
+        }
+        .academics-busy-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .academics-busy-close {
+            margin-top: 18px;
+            padding: 10px 22px;
+            background: #8b0000;
+            color: #fff;
+            border: 0;
+            border-radius: 3px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 <body>
     <!-- ==============================================
@@ -131,21 +197,21 @@
         <div class="container">
             <div class="row">
                 <ul class="pageULLI">
-                    <li><a href="Science%20Talent%20Exam.html"> Vidyarthi Vigyan Manthan 2021-22 India's Largest online openk-book Science Talent Search examination.</a></li>
-                    <li><a href="DED1648.html">REGARDING - ONLINE APPLICATION FORM OF&nbsp; D.EL.ED (Ist/IInd)Year EXAM SESSION 2019-20</a></li>
-                    <li><a href="Bse_890_91.html">REGARDING- HS/HSS/HSS(VOC)/DPSE/PHYSICAL PRACTICAL EXAMINATION SESSION-2019-20</a></li>
-                    <li><a href="D.El.Ed._1382.html">EXTENDED DATE UPTO 26/09/2019 FOR D.El.Ed. Ist/IInd YEAR(SUPPLYMENTRY) EXAM FORM 2019&nbsp;&nbsp; </a></li>
-                    <li><a href="D.El.Ed._practi2019.html">REGARDING D.EL.ED Ist YEAR AND IInd YEAR PRACTICAL EXAM 2019</a></li>
-                    <li><a href="Cordi_1368_69.html">REGARDING - EXAM CENTRE SELECTION OF SESSION-2019-20 </a></li>
-                    <li><a href="P_Niti19-20.html">PRAVESH NITI SESSION 2019-20</a></li>
-                    <li><a href="PN_CORR_ORDER_829.html" target="_parent">CORRECTION II -PRAVESH NITI FOR &nbsp; SESSION-2018-19</a></li>
-                    <li><a href="praveshniti18-19.html" target="_parent">PRAVESH NITI FOR &nbsp; SESSION-2018-19</a></li>
-                    <li><a href="394-preveshniti.html" target="_parent">CORRECTION -PRAVESH NITI FOR &nbsp; SESSION-2017-18</a></li>
-                    <li><a href="PRAVESHNITI-1718.html" target="_parent">PRAVESH NITI FOR &nbsp; SESSION-2017-18</a></li>
-                    <li><a href="GRACENITI.html" target="_parent">Vigyapti regarding-Grace Niti</a></li>
-                    <li><a href="Online_Correction_orders.html">ORDER FOR CORRECTION (ONLINE MODULE) IN HIGH SCHOOL/HIGHER SECONDARY MARKSHEET DOCUMENTS</a></li>
-                    <li><a href="sambal_833-35-42-66.html">ORDER REGARDING-SAMBAL YOJNA </a></li>
-                    <li><a href="VIG-AFF-DELED1819.html" target="_parent">REGARDING AFFILATION OF D.EL.ED&amp;D.P.S.E. EXAM SESSION </a><a href="VIG-1718.html">2018-19</a></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0"> Vidyarthi Vigyan Manthan 2021-22 India's Largest online openk-book Science Talent Search examination.</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">REGARDING - ONLINE APPLICATION FORM OF&nbsp; D.EL.ED (Ist/IInd)Year EXAM SESSION 2019-20</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">REGARDING- HS/HSS/HSS(VOC)/DPSE/PHYSICAL PRACTICAL EXAMINATION SESSION-2019-20</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">EXTENDED DATE UPTO 26/09/2019 FOR D.El.Ed. Ist/IInd YEAR(SUPPLYMENTRY) EXAM FORM 2019&nbsp;&nbsp; </span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">REGARDING D.EL.ED Ist YEAR AND IInd YEAR PRACTICAL EXAM 2019</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">REGARDING - EXAM CENTRE SELECTION OF SESSION-2019-20 </span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">PRAVESH NITI SESSION 2019-20</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">CORRECTION II -PRAVESH NITI FOR &nbsp; SESSION-2018-19</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">PRAVESH NITI FOR &nbsp; SESSION-2018-19</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">CORRECTION -PRAVESH NITI FOR &nbsp; SESSION-2017-18</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">PRAVESH NITI FOR &nbsp; SESSION-2017-18</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">Vigyapti regarding-Grace Niti</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">ORDER FOR CORRECTION (ONLINE MODULE) IN HIGH SCHOOL/HIGHER SECONDARY MARKSHEET DOCUMENTS</span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">ORDER REGARDING-SAMBAL YOJNA </span></li>
+                    <li><span class="academics-busy-link" role="button" tabindex="0">REGARDING AFFILATION OF D.EL.ED&amp;D.P.S.E. EXAM SESSION </span><span class="academics-busy-link" role="button" tabindex="0">2018-19</span></li>
 
 
                 </ul>
@@ -161,6 +227,18 @@
     <!-- ==============================================
     ** Footer **
     =================================================== -->
+    
+    <div id="academicsServerBusy" class="academics-busy-modal" hidden>
+        <div class="academics-busy-overlay" data-close-busy="1"></div>
+        <div class="academics-busy-card" role="dialog" aria-modal="true" aria-labelledby="academicsBusyTitle">
+            <h1 id="academicsBusyTitle">Server Busy</h1>
+            <h2>सर्वर व्यस्त है</h2>
+            <p>The server is temporarily busy due to high traffic. Please try again after some time.</p>
+            <p>उच्च ट्रैफ़िक के कारण सर्वर अस्थायी रूप से व्यस्त है। कृपया कुछ समय बाद पुनः प्रयास करें।</p>
+            <button type="button" class="academics-busy-close" data-close-busy="1">Close / बंद करें</button>
+        </div>
+    </div>
+
     <footer class="footer">
 
         <!-- End Footer Top -->
@@ -203,7 +281,6 @@
                                 M.P. Board of Secondary Education
                                 Shivaji Nagar, Bhopal - 462011 <br />
                                 Phone No:0755- 2551166-71 <br />
-                                WEBSITE: www.mpbse.org <br />
                                 E-Mail: mpbse[at][dot]org
                             </p>
 
@@ -228,6 +305,49 @@
     <script src="resources/assets/owl-carousel/js/owl.carousel.min.html"></script>
     <script src="resources/js/modernizr.custom.html"></script>
     <script src="resources/js/custom.html"></script>
+
+    <script>
+        (function () {
+            function showBusyModal(event) {
+                if (event) {
+                    event.preventDefault();
+                }
+                var modal = document.getElementById("academicsServerBusy");
+                if (modal) {
+                    modal.hidden = false;
+                }
+            }
+
+            function hideBusyModal() {
+                var modal = document.getElementById("academicsServerBusy");
+                if (modal) {
+                    modal.hidden = true;
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll(".academics-busy-link").forEach(function (item) {
+                    item.addEventListener("click", showBusyModal);
+                    item.addEventListener("keydown", function (event) {
+                        if (event.key === "Enter" || event.key === " ") {
+                            showBusyModal(event);
+                        }
+                    });
+                });
+
+                document.querySelectorAll("[data-close-busy]").forEach(function (item) {
+                    item.addEventListener("click", hideBusyModal);
+                });
+
+                document.addEventListener("keydown", function (event) {
+                    if (event.key === "Escape") {
+                        hideBusyModal();
+                    }
+                });
+            });
+        })();
+    </script>
+
 </body>
 
 <!-- Mirrored from protechtheme.com/edumart/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 03 Oct 2020 05:33:27 GMT -->
