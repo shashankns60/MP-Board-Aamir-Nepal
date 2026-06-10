@@ -188,13 +188,12 @@
     return (
       '<div class="ms-wrap">' +
       '<div style="position:relative; background: linear-gradient(160deg, #f5d8d8 0%, #faeaea 25%, #f8f4e6 55%, #d8edd8 100%);">' +
-      '<div class="ms-watermark">मध्यप्रदेश</div>' +
       '<div class="ms-inner-content">' +
       '<div class="ms-header">' +
       '<div class="ms-header-inner">' +
       '<div class="ms-logo"><img src="' +
       LOGO_SRC +
-      '" style="width:72px;height:72px;object-fit:contain;" alt="MP Board Logo"></div>' +
+      '" style="width:80px;height:80px;object-fit:contain;" alt="MP Board Logo"></div>' +
       '<div class="ms-header-text">' +
       '<div class="ms-title-hi">माध्यमिक शिक्षा मण्डल, मध्यप्रदेश, भोपाल</div>' +
       '<div class="ms-title-en">BOARD OF SECONDARY EDUCATION, MADHYA PRADESH, BHOPAL</div>' +
@@ -284,25 +283,21 @@
       escapeHtml(resultText) +
       "</span></div>" +
       '<div class="ms-add-subject" style="display:flex; align-items:center; gap:8px; min-height:22px;"><span>अतिरिक्त विषय / ADDITIONAL SUBJECT</span></div>' +
-      '<div class="ms-env-row"><div>' +
-      '<div style="font-family:\'Noto Sans Devanagari\',sans-serif; font-size:9.5px;">पर्यावरण शिक्षा एवं आपदा प्रबंधन</div>' +
-      '<div style="font-size:9px; color:#444;">Environment Education &amp; Disaster Management</div>' +
-      '<div style="font-size:9px; color:#8B0000; margin-top:2px;">+ राज्य/राष्ट्रीय/अन्तरार्ष्ट्रीय स्तरपर खेलने पर प्राप्त बोनस अंक</div>' +
-      '<div style="font-size:8.5px; color:#8B0000;">AWARDED BONUS MARKS FOR PARTICIPATION IN STATE / NATIONAL / INTERNATIONAL LEVEL GAMES: <strong>-</strong></div></div>' +
-      '<div style="text-align:center;"><div style="font-family:\'Noto Sans Devanagari\',sans-serif; font-size:10px; font-weight:700;">ग्रेड</div>' +
-      '<div style="font-size:9px; font-weight:700;">GRADE</div><div class="ms-grade-box">-</div></div></div>' +
+      '<div class="ms-env-row"><div class="ms-env-text">' +
+      '<div class="ms-bi-stack" style="font-size:9.5px; margin-bottom:3px;"><span class="ms-bi-hi">पर्यावरण शिक्षा एवं आपदा प्रबंधन</span><span class="ms-bi-en" style="font-size:9px;">Environment Education &amp; Disaster Management</span></div>' +
+      '<div class="ms-bi-stack" style="font-size:9px; color:#8B0000;"><span class="ms-bi-hi">+ राज्य/राष्ट्रीय/अन्तरार्ष्ट्रीय स्तरपर खेलने पर प्राप्त बोनस अंक</span><span class="ms-bi-en" style="font-size:8.5px;">AWARDED BONUS MARKS FOR PARTICIPATION IN STATE / NATIONAL / INTERNATIONAL LEVEL GAMES: <strong>-</strong></span></div></div>' +
+      '<div style="text-align:center;"><div class="ms-bi-stack" style="font-weight:700;"><span class="ms-bi-hi" style="font-size:10px;">ग्रेड</span><span class="ms-bi-en" style="font-size:9px;">GRADE</span></div><div class="ms-grade-box">-</div></div></div>' +
       '<div class="ms-bottom-section"><div class="ms-bottom-left">' +
       '<div class="ms-date-stamp">' +
       displayValue(student.issueDate, "-") +
       "</div>" +
       '<div class="ms-regular-note">(केवल नियमित परीक्षार्थियों के लिए For Regular Candidates only)</div>' +
-      '<div style="font-family:\'Noto Sans Devanagari\',sans-serif; font-size:9px; margin-bottom:2px;">निम्नांकित आंत्रिक विषयों में निपुणता प्राप्त की:</div>' +
-      '<div style="font-size:8.5px; color:#333; margin-bottom:1px;">Attained Proficiency in the following internal subjects:-</div>' +
+      '<div class="ms-bi-stack" style="font-size:9px; margin-bottom:3px;"><span class="ms-bi-hi">निम्नांकित आंत्रिक विषयों में निपुणता प्राप्त की:</span><span class="ms-bi-en" style="font-size:8.5px; color:#333;">Attained Proficiency in the following internal subjects:-</span></div>' +
       '<div style="font-size:9px;">(1) <span style="font-family:\'Noto Sans Devanagari\',sans-serif;">समाजोपयोगी उत्पादक कार्य</span> Socialy Daeus Productive wors</div>' +
       '<div style="font-size:9px;">(2) <span style="font-family:\'Noto Sans Devanagari\',sans-serif;">शारीरिक, योगा एवं नैतिक शिक्षा</span> Physical Yoga &amp; Monal Education</div></div>' +
-      '<div class="ms-bottom-right" style="display:flex; flex-direction:column; justify-content:space-between;"><div>' +
-      '<div style="font-family:\'Noto Sans Devanagari\',sans-serif; font-size:9px; text-align:center; color:#333;">प्राचार्य के स्याही से हस्ताक्षर एवं पद मुद्रा</div>' +
-      '<div style="font-size:8.5px; text-align:center; color:#333;">SEAL AND SIGNATURE OF THE PRINCIPAL</div></div>' +
+      '<div class="ms-bottom-right" style="display:flex; flex-direction:column; justify-content:space-between;"><div class="ms-bi-stack" style="color:#333;">' +
+      '<span class="ms-bi-hi" style="font-size:9px; text-align:center;">प्राचार्य के स्याही से हस्ताक्षर एवं पद मुद्रा</span>' +
+      '<span class="ms-bi-en" style="font-size:8.5px; text-align:center;">SEAL AND SIGNATURE OF THE PRINCIPAL</span></div>' +
       '<div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">' +
       '<div style="text-align:center; font-family:\'Noto Sans Devanagari\',sans-serif; font-size:11px; font-weight:700; border-top:1px solid #000; padding-top:3px;">सचिव/ SECRETARY</div></div></div></div>' +
       '<div class="ms-bottom-ids"><span>' +
