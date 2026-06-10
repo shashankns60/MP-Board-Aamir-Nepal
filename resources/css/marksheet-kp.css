@@ -64,7 +64,26 @@
   .ms-sign-text { font-size: 9px; text-align: center; color: #333; }
   .ms-sign-name { font-size: 11px; font-style: italic; font-family: 'Noto Sans Devanagari', sans-serif; }
   .ms-proficiency { padding: 5px 8px; border-top: 1px solid #ccc; font-size: 9px; }
-  .ms-watermark { display: none; }
+  .ms-logo-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    width: 300px;
+    max-width: 72%;
+    pointer-events: none;
+    opacity: 0.05;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ms-logo-watermark img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
   .ms-inner-content { position: relative; z-index: 1; }
   .ms-header-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 5px; padding: 0 4px; }
   .ms-th-hi { font-family: 'Noto Sans Devanagari', sans-serif; }

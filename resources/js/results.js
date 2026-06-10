@@ -329,7 +329,10 @@
 
     return (
       '<div class="ms-wrap">' +
-      '<div style="position:relative; background: linear-gradient(160deg, #f5d8d8 0%, #faeaea 25%, #f8f4e6 55%, #d8edd8 100%);">' +
+      '<div class="ms-sheet-bg" style="position:relative; background: linear-gradient(160deg, #f5d8d8 0%, #faeaea 25%, #f8f4e6 55%, #d8edd8 100%);">' +
+      '<div class="ms-logo-watermark" aria-hidden="true"><img src="' +
+      LOGO_SRC +
+      '" alt=""></div>' +
       '<div class="ms-inner-content">' +
       '<div class="ms-header">' +
       '<div class="ms-header-inner">' +
