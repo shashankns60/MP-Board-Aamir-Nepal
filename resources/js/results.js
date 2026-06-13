@@ -1,5 +1,6 @@
 (function () {
   var resultsData = null;
+  var API_BASE = window.MPBSE_API_BASE || "";
 
   function escapeHtml(value) {
     if (value === null || value === undefined) {
@@ -514,6 +515,31 @@
     container.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  function lookupFromApi(rollNumber, dob) {
+    if (!API_BASE) {
+      return Promise.reject(new Error("NO_API"));
+    }
+
+    return fetch(API_BASE.replace(/\/$/, "") + "/api/results/lookup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        rollNumber: rollNumber,
+        dateOfBirth: dob,
+      }),
+    }).then(function (response) {
+      return response.json().then(function (payload) {
+        if (!response.ok || !payload.success) {
+          throw new Error(payload.message || "Lookup failed.");
+        }
+        return payload.data;
+      });
+    });
+  }
+
   function findStudent(rollNumber, dob) {
     var normalizedRoll = normalizeRoll(rollNumber);
     return (resultsData || []).find(function (student) {
@@ -555,33 +581,58 @@
     }
 
     var lookup = function () {
-      var student = findStudent(rollInput.value, dobInput.value);
-      if (!student) {
-        showMessage(
-          output,
-          "No marksheet found for the given Roll Number and Date of Birth.",
-          true
-        );
-        return;
-      }
-      output.innerHTML = renderMarksheet(student);
-      output.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
+      var showStudent = function (student) {
+        output.innerHTML = renderMarksheet(student);
+        output.scrollIntoView({ behavior: "smooth", block: "start" });
+      };
 
-    if (resultsData) {
-      lookup();
-    } else {
-      showMessage(output, "Loading results data...", false);
-      loadResultsData()
-        .then(lookup)
-        .catch(function () {
+      var fallbackLookup = function () {
+        var student = findStudent(rollInput.value, dobInput.value);
+        if (!student) {
           showMessage(
             output,
-            "Unable to load results data. Please refresh the page and try again.",
+            "No marksheet found for the given Roll Number and Date of Birth.",
             true
           );
-        });
-    }
+          return;
+        }
+        showStudent(student);
+      };
+
+      if (API_BASE) {
+        lookupFromApi(rollInput.value, dobInput.value)
+          .then(showStudent)
+          .catch(function (error) {
+            if (error && error.message === "NO_API") {
+              fallbackLookup();
+              return;
+            }
+            showMessage(
+              output,
+              (error && error.message) ||
+                "Unable to fetch result from server. Please try again.",
+              true
+            );
+          });
+        return;
+      }
+
+      if (resultsData) {
+        fallbackLookup();
+      } else {
+        showMessage(output, "Loading results data...", false);
+        loadResultsData()
+          .then(fallbackLookup)
+          .catch(function () {
+            showMessage(
+              output,
+              "Unable to load results data. Please refresh the page and try again.",
+              true
+            );
+          });
+      }
+    };
+    lookup();
 
     return false;
   }
