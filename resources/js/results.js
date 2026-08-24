@@ -328,38 +328,140 @@
     );
   }
 
-  function buildSubjectRows(subjects) {
-    return subjects
-      .map(function (subject, index) {
-        var hasPractical =
-          subject.practical !== null &&
-          subject.practical !== undefined &&
-          subject.practical !== "" &&
-          Number(subject.practical) > 0;
-        var rowStyle = index % 2 === 1 ? ' style="background:#f9f9f5;"' : "";
+  function getSubjectCode(subject, studentClass) {
+    if (subject && (subject.code || subject.subjectCode)) {
+      return String(subject.code || subject.subjectCode);
+    }
 
+    var name = String((subject && subject.name) || "")
+      .toLowerCase()
+      .replace(/[^a-z]+/g, " ")
+      .trim();
+
+    var tenth = {
+      hindi: "201",
+      english: "202",
+      sanskrit: "203",
+      urdu: "209",
+      mathematics: "210",
+      maths: "210",
+      science: "211",
+      "social science": "212",
+      "computer science": "218",
+      computer: "218",
+    };
+    var twelfth = {
+      hindi: "301",
+      english: "302",
+      sanskrit: "303",
+      mathematics: "310",
+      maths: "310",
+      physics: "311",
+      chemistry: "312",
+      biology: "313",
+      "computer science": "318",
+      computer: "318",
+      economics: "321",
+      "business studies": "322",
+      accountancy: "323",
+      history: "330",
+      geography: "331",
+      "political science": "332",
+      sociology: "333",
+    };
+
+    var map = studentClass === "10th" ? tenth : twelfth;
+    return map[name] || "-";
+  }
+
+  function isBlueSubject(subject) {
+    var name = String((subject && subject.name) || "").toLowerCase();
+    return name.indexOf("computer") !== -1;
+  }
+
+  function formatPracticalMarks(value) {
+    if (
+      value === null ||
+      value === undefined ||
+      value === "" ||
+      Number(value) === 0
+    ) {
+      return "-";
+    }
+    return formatMarks(value);
+  }
+
+  function formatDobSlash(value) {
+    var parts = parseDobParts(value);
+    if (!parts || !parts.day || !parts.month || !parts.year) {
+      return displayValue(value, "-");
+    }
+    return (
+      String(parts.day).padStart(2, "0") +
+      "/" +
+      String(parts.month).padStart(2, "0") +
+      "/" +
+      parts.year
+    );
+  }
+
+  function formatResultDeclarationDate(student) {
+    var issue = String(student.issueDate || "").trim();
+    var dotted = issue.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+    if (dotted) {
+      return (
+        dotted[1].padStart(2, "0") +
+        "/" +
+        dotted[2].padStart(2, "0") +
+        "/" +
+        dotted[3]
+      );
+    }
+    var iso = issue.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (iso) {
+      return iso[3] + "/" + iso[2] + "/" + iso[1];
+    }
+    return displayValue(student.examinationYear, "2026");
+  }
+
+  function getNicExamHeading(student) {
+    var year = student.examinationYear || "2026";
+    if (student.class === "10th") {
+      return (
+        "High School Certificate Examination (HSC) - 10<sup>th</sup> Class Result - " +
+        escapeHtml(year)
+      );
+    }
+    return (
+      "Higher Secondary School Certificate Examination (HSSC) - 12<sup>th</sup> Class Result - " +
+      escapeHtml(year)
+    );
+  }
+
+  function buildSubjectRows(subjects, studentClass) {
+    return (subjects || [])
+      .map(function (subject) {
+        var nameClass = isBlueSubject(subject) ? "name blue" : "name";
         return (
-          "<tr" +
-          rowStyle +
-          ">" +
-          '<td class="subject-col">' +
-          escapeHtml(String(subject.name || "").toUpperCase()) +
+          "<tr>" +
+          '<td class="code">' +
+          escapeHtml(getSubjectCode(subject, studentClass)) +
           "</td>" +
-          '<td class="max-marks">100</td>' +
-          "<td>33</td>" +
-          "<td>" +
-          (hasPractical ? "10" : "-") +
+          '<td class="' +
+          nameClass +
+          '">' +
+          escapeHtml(String(subject.name || "-").toUpperCase()) +
           "</td>" +
-          '<td class="marks-val">' +
+          '<td class="theory">' +
           formatMarks(subject.theory) +
           "</td>" +
-          "<td>" +
-          (hasPractical ? formatMarks(subject.practical) : "-") +
+          '<td class="practical">' +
+          formatPracticalMarks(subject.practical) +
           "</td>" +
-          '<td class="marks-val">' +
+          '<td class="total">' +
           formatMarks(subject.total) +
           "</td>" +
-          "<td></td>" +
+          '<td class="remark"></td>' +
           "</tr>"
         );
       })
@@ -367,141 +469,112 @@
   }
 
   function renderMarksheet(student) {
-    var titles = getExamTitles(student);
     var examYear = student.examinationYear || "2026";
     var resultText =
       (student.resultStatus || "PASS") +
-      (student.division ? " IN " + String(student.division).toUpperCase() + " DIVISION" : "");
-    var words = numberToWords(student.totalObtained).toUpperCase();
+      (student.division
+        ? " IN " + String(student.division).toUpperCase() + " DIVISION"
+        : "");
+    var obtained = displayValue(student.totalObtained, "-");
+    var maximum = displayValue(student.maximumMarks, "600");
+    var centreCode = displayValue(
+      student.centreCode || student.centerCode || student.schoolCode,
+      "-"
+    );
+    var applicationNo = displayValue(
+      student.applicationNumber || student.applicationNo || student.serialNumber,
+      "-"
+    );
+    var candidateType = displayValue(student.candidateType, "REGULAR");
 
     return (
-      '<div class="ms-wrap">' +
-      '<div class="ms-sheet-bg" style="position:relative; background: linear-gradient(160deg, #f5d8d8 0%, #faeaea 25%, #f8f4e6 55%, #d8edd8 100%);">' +
-      '<div class="ms-logo-watermark" aria-hidden="true"><img src="' +
-      LOGO_SRC +
-      '" alt=""></div>' +
-      '<div class="ms-inner-content">' +
-      '<div class="ms-header">' +
-      '<div class="ms-header-inner">' +
-      '<div class="ms-logo"><img src="' +
-      LOGO_SRC +
-      '" style="width:80px;height:80px;object-fit:contain;" alt="MP Board Logo"></div>' +
-      '<div class="ms-header-text">' +
-      '<div class="ms-title-hi">माध्यमिक शिक्षा मण्डल, मध्यप्रदेश, भोपाल</div>' +
-      '<div class="ms-title-en">BOARD OF SECONDARY EDUCATION, MADHYA PRADESH, BHOPAL</div>' +
-      '<div style="margin-top:4px;">' +
-      '<div class="ms-subtitle-hi">' +
-      titles.hindi +
+      '<div class="ms-nic-wrap"><div class="ms-nic-canvas">' +
+      '<div class="header">' +
+      '<div class="title">BOARD OF SECONDARY EDUCATION, Madhya Pradesh</div>' +
+      '<div class="subtitle">(Examination Results - ' +
+      escapeHtml(examYear) +
+      ")</div>" +
+      '<div class="brought-by">Brought to you by National Informatics Centre</div>' +
       "</div>" +
-      '<div class="ms-subtitle-en">' +
-      titles.english +
-      "</div></div></div>" +
-      '<div class="ms-logo" style="visibility:hidden;"></div></div>' +
-      '<div class="ms-header-bottom">' +
-      '<div style="font-size:10px;font-weight:700;">' +
-      getExamSessionLabel(student) +
-      ' &nbsp; <span style="font-family:\'Noto Sans Devanagari\',sans-serif;font-size:9px;">अंकसूची सह-प्रमाणपत्र</span></div>' +
-      '<div class="ms-marksheet-label">MARKSHEET CUM-CERTIFICATE</div>' +
-      '<div><span class="ms-sno">स.क्र./ S.NO. </span><span class="ms-sno-val">' +
-      displayValue(student.serialNumber, "-") +
-      "</span></div></div></div>" +
-      '<div class="ms-grid-top">' +
-      '<div class="ms-grid-top-cell"><div class="ms-cell-label">केन्द्र क्रमांक</div><div class="ms-cell-label-en">CENTER NO.</div><div class="ms-cell-val">' +
+      '<div class="exam-heading">' +
+      getNicExamHeading(student) +
+      "</div>" +
+      '<table class="meta-table"><tr>' +
+      '<th style="width:13%">Centre Code</th>' +
+      '<th style="width:14%">School Code</th>' +
+      '<th style="width:20%">Enrolment No</th>' +
+      '<th style="width:18%">Regular/Private</th>' +
+      '<th style="width:17%">Application No</th>' +
+      '<th style="width:18%">Roll Number</th>' +
+      "</tr><tr>" +
+      "<td>" +
+      centreCode +
+      "</td>" +
+      "<td>" +
       displayValue(student.schoolCode, "-") +
-      "</div></div>" +
-      '<div class="ms-grid-top-cell"><div class="ms-cell-label">संस्था क्रमांक</div><div class="ms-cell-label-en">SCHOOL NO.</div><div class="ms-cell-val">' +
-      displayValue(student.schoolCode, "-") +
-      "</div></div>" +
-      '<div class="ms-grid-top-cell"><div class="ms-cell-label">नामांकन क्रमांक</div><div class="ms-cell-label-en">ENROLLMENT NUMBER</div><div class="ms-cell-val">' +
+      "</td>" +
+      "<td>" +
       displayValue(student.enrollmentNumber, "-") +
-      "</div></div>" +
-      '<div class="ms-grid-top-cell"><div class="ms-cell-label">नियमित/स्वाध्यायी</div><div class="ms-cell-label-en">REGULAR / PRIVATE</div><div class="ms-cell-val">REGULAR</div></div>' +
-      '<div class="ms-grid-top-cell" style="border-right:none;"><div class="ms-cell-label">रोल नंबर</div><div class="ms-cell-label-en">ROLL NUMBER</div><div class="ms-cell-val">' +
+      "</td>" +
+      "<td>" +
+      escapeHtml(String(candidateType).toUpperCase()) +
+      "</td>" +
+      "<td>" +
+      applicationNo +
+      "</td>" +
+      "<td>" +
       displayValue(student.rollNumber, "-") +
-      "</div></div></div>" +
-      '<div class="ms-certified-bar"><span style="font-size:10px;">प्रमाणित किया जाता है कि</span><span class="ms-certified-en">&nbsp;/ &nbsp;CERTIFIED THAT</span></div>' +
-      '<div class="ms-person-section"><div class="ms-person-left">' +
-      '<div class="ms-person-row"><div class="ms-person-label">श्री/सुश्री<span class="ms-person-label-en">SHRI / SUSHRI</span></div>' +
-      '<div style="flex:1; display:flex; justify-content:space-between; align-items:baseline;">' +
-      '<div class="ms-person-val">' +
+      "</td>" +
+      "</tr></table>" +
+      '<div class="student-info-wrap"><table class="student-info">' +
+      '<tr><td class="label">Student Name</td><td class="value">' +
       escapeHtml(String(student.studentName || "-").toUpperCase()) +
-      '</div><div style="font-size:9px; color:#333;">जिनके / WHOSE</div></div></div>' +
-      '<div class="ms-person-row"><div class="ms-person-label">पिता/पति का नाम<span class="ms-person-label-en">FATHER\'S HUSBAND\'S NAME IS</span></div>' +
-      '<div class="ms-person-val">' +
+      "</td></tr>" +
+      '<tr><td class="label">Father\'s Name</td><td class="value">' +
       escapeHtml(String(student.fatherName || "-").toUpperCase()) +
-      "</div></div>" +
-      '<div class="ms-person-row"><div class="ms-person-label">व माता का नाम<span class="ms-person-label-en">AND MOTHER\'S NAME IS</span></div>' +
-      '<div class="ms-person-val">' +
+      "</td></tr>" +
+      '<tr><td class="label">Mother\'s Name</td><td class="value">' +
       escapeHtml(String(student.motherName || "-").toUpperCase()) +
-      "</div></div>" +
-      '<div class="ms-person-row" style="align-items:flex-start;"><div class="ms-person-label">तथा जन्म तिथि<span class="ms-person-label-en">AND DATE OF BIRTH IS</span></div>' +
-      '<div class="ms-person-val" style="font-size:10px; line-height:1.4;">' +
-      formatDobLongHtml(student.dateOfBirth) +
-      "</div></div></div></div>" +
-      '<div class="ms-appeared-text">' +
-      '<span style="font-size:9.5px;">इस मण्डल की हाईस्कूल सर्टिफिकेट परीक्षा वर्ष - ' +
-      examYear +
-      " में संस्था/केन्द्र** से सम्मिलित हुए एवं विषयवार प्राप्तांक निम्नानुसार अर्जित किए हैं :-</span><br>" +
-      '<span style="font-size:9px; color:#333;">APPEARED IN THE HIGHER SECONDARY SCHOOL CERTIFICATE EXAMINATION OF THIS BOARD IN THE YEAR ' +
-      examYear +
-      " FROM (SCHOOL / CENTRE)** AND SUBJECT WISE MARKS OBTAINED ARE AS UNDERL:-</span></div>" +
-      '<div class="ms-school-name">' +
-      escapeHtml(String(student.schoolName || "-").toUpperCase()) +
-      "</div>" +
-      '<table class="ms-marks-table"><thead><tr>' +
-      '<th rowspan="2" style="width:160px; text-align:left; padding-left:8px; vertical-align:middle;"><div class="ms-th-label" style="align-items:flex-start;"><span class="th-hi">विषय</span><span class="th-en">/ SUBJECTS</span></div></th>' +
-      '<th rowspan="2" style="width:55px;"><div class="ms-th-label"><span class="th-hi">अधिकतम अंक</span><span class="th-en">MAX MARKS</span></div></th>' +
-      '<th rowspan="2" style="width:45px;"><div class="ms-th-label"><span class="th-hi">न्यूनतम सैद्धांतिक</span><span class="th-en">MIN THEORY</span></div></th>' +
-      '<th rowspan="2" style="width:45px;"><div class="ms-th-label"><span class="th-hi">न्यूनतम प्रायोगिक</span><span class="th-en">MIN PRACTICAL</span></div></th>' +
-      '<th colspan="3" style="background:#d4c888;"><div class="ms-th-label"><span class="th-hi">प्राप्तांक</span><span class="th-en">/ MARKS OBTAINED</span></div></th>' +
-      '<th rowspan="2" style="width:55px;"><div class="ms-th-label"><span class="th-hi">विशेष</span><span class="th-en">REMARKS</span></div></th></tr><tr>' +
-      '<th style="width:55px; background:#e0d898;"><div class="ms-th-label"><span class="th-hi">सैद्धांतिक</span><span class="th-en">THEORY</span></div></th>' +
-      '<th style="width:55px; background:#e0d898;"><div class="ms-th-label"><span class="th-hi">प्रायोगिक</span><span class="th-en">PRACTICAL</span></div></th>' +
-      '<th style="width:45px; background:#e0d898;"><div class="ms-th-label"><span class="th-hi">योग</span><span class="th-en">TOTAL</span></div></th></tr></thead><tbody>' +
-      buildSubjectRows(student.subjects || []) +
-      '<tr class="ms-grand-total-row"><td colspan="1" style="text-align:right; padding-right:8px; font-family:\'Noto Sans Devanagari\',sans-serif;"></td>' +
-      '<td style="font-weight:700;">' +
-      displayValue(student.maximumMarks, "-") +
-      '</td><td colspan="4" style="font-family:\'Noto Sans Devanagari\',sans-serif; font-size:11px;">महायोग / GRAND TOTAL</td>' +
-      '<td style="font-size:13px; font-weight:900; color:#8B0000;">' +
-      displayValue(student.totalObtained, "-") +
-      "</td><td></td></tr></tbody></table>" +
-      '<div class="ms-total-words"><span style="font-family:\'Noto Sans Devanagari\',sans-serif; font-size:9.5px;">महायोग शब्दों में:</span>' +
-      "&nbsp; GRAND TOTAL IN WORDS : <span>" +
-      escapeHtml(words) +
-      "</span></div>" +
-      '<div class="ms-result-row"><span class="ms-result-label">परीक्षाफल / RESULT</span>' +
-      '<span class="ms-result-val">&nbsp;&nbsp;&nbsp; ' +
+      "</td></tr>" +
+      '<tr><td class="label">Date of Birth</td><td class="value">' +
+      formatDobSlash(student.dateOfBirth) +
+      "</td></tr>" +
+      "</table></div>" +
+      '<div class="result-status">Result :- ' +
       escapeHtml(resultText) +
-      "</span></div>" +
-      '<div class="ms-add-subject" style="display:flex; align-items:center; gap:8px; min-height:22px;"><span>अतिरिक्त विषय / ADDITIONAL SUBJECT</span></div>' +
-      '<div class="ms-env-row"><div class="ms-env-text">' +
-      '<div class="ms-bi-stack" style="font-size:9.5px; margin-bottom:3px;"><span class="ms-bi-hi">पर्यावरण शिक्षा एवं आपदा प्रबंधन</span><span class="ms-bi-en" style="font-size:9px;">Environment Education &amp; Disaster Management</span></div>' +
-      '<div class="ms-bi-stack" style="font-size:9px; color:#8B0000;"><span class="ms-bi-hi">+ राज्य/राष्ट्रीय/अन्तरार्ष्ट्रीय स्तरपर खेलने पर प्राप्त बोनस अंक</span><span class="ms-bi-en" style="font-size:8.5px;">AWARDED BONUS MARKS FOR PARTICIPATION IN STATE / NATIONAL / INTERNATIONAL LEVEL GAMES: <strong>-</strong></span></div></div>' +
-      '<div style="text-align:center;"><div class="ms-bi-stack" style="font-weight:700;"><span class="ms-bi-hi" style="font-size:10px;">ग्रेड</span><span class="ms-bi-en" style="font-size:9px;">GRADE</span></div><div class="ms-grade-box">' +
-      escapeHtml(calculateGrade(student)) +
-      "</div></div></div>" +
-      '<div class="ms-bottom-section"><div class="ms-bottom-left">' +
-      '<div class="ms-date-stamp">' +
-      displayValue(student.issueDate, "-") +
       "</div>" +
-      '<div class="ms-regular-note">(केवल नियमित परीक्षार्थियों के लिए For Regular Candidates only)</div>' +
-      '<div class="ms-bi-stack" style="font-size:9px; margin-bottom:3px;"><span class="ms-bi-hi">निम्नांकित आंत्रिक विषयों में निपुणता प्राप्त की:</span><span class="ms-bi-en" style="font-size:8.5px; color:#333;">Attained Proficiency in the following internal subjects:-</span></div>' +
-      '<div style="font-size:9px;">(1) <span style="font-family:\'Noto Sans Devanagari\',sans-serif;">समाजोपयोगी उत्पादक कार्य</span> Socialy Daeus Productive wors</div>' +
-      '<div style="font-size:9px;">(2) <span style="font-family:\'Noto Sans Devanagari\',sans-serif;">शारीरिक, योगा एवं नैतिक शिक्षा</span> Physical Yoga &amp; Monal Education</div></div>' +
-      '<div class="ms-bottom-right" style="display:flex; flex-direction:column; justify-content:space-between;"><div class="ms-bi-stack" style="color:#333;">' +
-      '<span class="ms-bi-hi" style="font-size:9px; text-align:center;">प्राचार्य के स्याही से हस्ताक्षर एवं पद मुद्रा</span>' +
-      '<span class="ms-bi-en" style="font-size:8.5px; text-align:center;">SEAL AND SIGNATURE OF THE PRINCIPAL</span></div>' +
-      '<div class="ms-secretary-block">' +
-      '<img src="' +
-      SECRETARY_SIGNATURE_SRC +
-      '" alt="Secretary signature" class="ms-secretary-sign">' +
-      '<div class="ms-secretary-label">सचिव/ SECRETARY</div></div></div></div>' +
-      '<div class="ms-bottom-ids"><span>' +
-      displayValue(student.serialNumber, "-") +
-      "</span><span>" +
-      displayValue(student.rollNumber, "-") +
-      "</span></div></div></div></div>"
+      '<div class="marks-wrap"><table class="marks-table"><tr>' +
+      '<th style="width:16%">Subject Code</th>' +
+      '<th style="width:20%">Subject Name</th>' +
+      '<th style="width:17%">Theory Marks</th>' +
+      '<th style="width:27%">Practical/Internal Marks</th>' +
+      '<th style="width:13%">Total Marks</th>' +
+      '<th style="width:7%">Remark</th>' +
+      "</tr>" +
+      buildSubjectRows(student.subjects || [], student.class) +
+      '<tr class="grand-total"><td colspan="6">Grand Total ( Theory + Practical/Internal Marks ) : ' +
+      obtained +
+      "/" +
+      maximum +
+      "</td></tr>" +
+      '<tr class="empty-row"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>' +
+      "</table></div>" +
+      '<div class="additional-info">' +
+      "<div><u>Participated</u> in NCC 'A' Certificate Course and obtained Grade: XX</div>" +
+      "<div>Environmental Education and Disaster Management: " +
+      escapeHtml(calculateGrade(student)) +
+      "</div>" +
+      "<div>Awarded Bonus Marks for participation in State/National/International level games: XX</div>" +
+      '<div class="hindi-note"># परीक्षा परिणाम नेट प्रदर्शित के आधार पर तैयार किया गया है। परीक्षा परिणाम में # से दर्शाये गए विषय के प्राप्तांक के महत्त्व में सम्मिलित नहीं किया गया है।</div>' +
+      "</div>" +
+      '<div class="retotal-notice"><p>Students may apply online for Re-totalling/copy of Answer-book within 15 days from the date of Result declaration<br>(i.e. ' +
+      formatResultDeclarationDate(student) +
+      ") through MPOnline only.</p></div>" +
+      '<div class="disclaimer-line">!!! NOTE: This information should not be treated as Marksheet !!!</div>' +
+      '<div class="links-section"><a href="#result-lookup-form">Back</a> &nbsp;&nbsp; <a href="result.html">Madhya Pradesh State Results</a></div>' +
+      '<div class="warning-box">Note: Neither <b>NIC</b> nor <b><u>Board of Secondary Education, Madhya Pradesh</u></b> is responsible for any inadvertent error that may have crept in the results being published on NET. The results published on net are for immediate information to the examinees. It cann\'t be treated as original marks sheets. Original mark sheets are being issued by the Board separately.</div>' +
+      '<div class="footer">Hosted By National Informatics Centre (NIC)<br>Data Provided By Board of Secondary Education, Madhya Pradesh</div>' +
+      "</div></div>"
     );
   }
 

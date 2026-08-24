@@ -1,136 +1,330 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Arial+Narrow&display=swap');
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  .ms-wrap { background: #fff; font-family: Arial, sans-serif; padding: 0; max-width: 720px; margin: 0 auto; color: #000; font-size: 11px; border: 2px solid #000; }
-  .ms-header { background: linear-gradient(135deg, #f2d0d0 0%, #f8eeee 35%, #f5f0e0 55%, #d4e8d0 100%); border-bottom: 2px solid #8B6914; padding: 8px 12px 6px; text-align: center; position: relative; }
-  .ms-header-inner { display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .ms-logo { width: 82px; height: 82px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
-  .ms-logo img { width: 80px; height: 80px; object-fit: contain; }
-  .ms-logo svg { width: 52px; height: 52px; }
-  .ms-header-text { text-align: center; }
-  .ms-title-hi { font-size: 16px; font-weight: 700; color: #8B0000; font-family: 'Noto Sans Devanagari', sans-serif; line-height: 1.3; }
-  .ms-title-en { font-size: 13px; font-weight: 700; color: #8B0000; letter-spacing: 0.5px; line-height: 1.3; }
-  .ms-subtitle-hi { font-size: 13px; font-weight: 600; color: #1a1a1a; font-family: 'Noto Sans Devanagari', sans-serif; }
-  .ms-subtitle-en { font-size: 11px; font-weight: 600; color: #1a1a1a; }
-  .ms-date-sno { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
-  .ms-marksheet-label { font-size: 14px; font-weight: 700; color: #8B0000; text-align: center; border: 1.5px solid #8B6914; padding: 2px 18px; display: inline-block; background: #fff8e8; }
-  .ms-sno { font-size: 13px; font-weight: 700; color: #000; }
-  .ms-sno-val { font-size: 14px; font-weight: 700; color: #8B0000; }
-  .ms-grid-top { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; border-bottom: 1.5px solid #000; }
-  .ms-grid-top-cell { border-right: 1px solid #000; padding: 4px 6px; }
-  .ms-grid-top-cell:last-child { border-right: none; }
-  .ms-cell-label { font-size: 9px; color: #333; font-family: 'Noto Sans Devanagari', sans-serif; line-height: 1.2; }
-  .ms-cell-label-en { font-size: 9px; color: #333; display: block; line-height: 1.15; margin-top: 1px; }
-  .ms-cell-val { font-size: 11px; font-weight: 700; color: #000; margin-top: 2px; }
-  .ms-certified-bar { background: #2e6b3e; color: #fff; text-align: center; padding: 4px 8px; font-size: 10px; font-family: 'Noto Sans Devanagari', sans-serif; }
-  .ms-certified-en { font-size: 9px; }
-  .ms-person-section { display: grid; grid-template-columns: 1fr; border-bottom: 1px solid #ccc; }
-  .ms-person-left { padding: 8px 10px; }
-  .ms-person-row { display: flex; align-items: baseline; margin-bottom: 4px; font-size: 10.5px; }
-  .ms-person-label { color: #333; min-width: 180px; font-family: 'Noto Sans Devanagari', sans-serif; font-size: 9.5px; line-height: 1.2; }
-  .ms-person-label-en { font-size: 9px; display: block; color: #555; line-height: 1.15; margin-top: 1px; }
-  .ms-person-val { font-weight: 700; font-size: 11px; color: #000; }
-  .ms-photo { border-left: 1px solid #ccc; display: flex; align-items: center; justify-content: center; padding: 8px; }
-  .ms-photo-box { width: 90px; height: 110px; border: 1.5px solid #999; background: #e8d5c0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .ms-appeared-text { padding: 4px 10px 6px; font-size: 9.5px; background: #f9f9f9; border-bottom: 1px solid #ccc; font-family: 'Noto Sans Devanagari', sans-serif; line-height: 1.3; }
-  .ms-school-name { font-weight: 700; font-size: 11px; text-align: center; padding: 4px; background: #f0e8d0; border-bottom: 1.5px solid #000; letter-spacing: 0.3px; }
-  .ms-marks-table { width: 100%; border-collapse: collapse; border-bottom: 1.5px solid #000; }
-  .ms-marks-table th, .ms-marks-table td { border: 1px solid #999; text-align: center; padding: 3px 4px; font-size: 10px; }
-  .ms-marks-table th { background: #e8d5a0; font-weight: 700; font-size: 9px; }
-  .ms-marks-table .subject-col { text-align: left; padding-left: 8px; font-weight: 700; font-size: 10.5px; }
-  .ms-marks-table .max-marks { background: #f5f5e8; }
-  .ms-marks-table .marks-val { font-weight: 700; font-size: 11px; }
-  .ms-grand-total-row td { background: #d4e8d0; font-weight: 700; font-size: 11px; }
-  .ms-total-words { padding: 4px 8px; font-size: 10px; border-bottom: 1px solid #ccc; background: #fffef5; }
-  .ms-total-words span { font-weight: 700; }
-  .ms-result-row { display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-bottom: 1px solid #ccc; font-size: 10px; background: #fffef5; }
-  .ms-result-label { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 10px; }
-  .ms-result-val { font-weight: 700; font-size: 12px; color: #8B0000; }
-  .ms-add-subject { padding: 4px 8px; border-bottom: 1px solid #ccc; font-size: 10px; font-family: 'Noto Sans Devanagari', sans-serif; }
-  .ms-env-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 8px; border-bottom: 1px solid #ccc; background: #fffef5; font-size: 10px; }
-  .ms-env-left { font-family: 'Noto Sans Devanagari', sans-serif; }
-  .ms-bi-stack { display: flex; flex-direction: column; gap: 2px; line-height: 1.2; }
-  .ms-bi-stack .ms-bi-hi { font-family: 'Noto Sans Devanagari', sans-serif; line-height: 1.2; }
-  .ms-bi-stack .ms-bi-en { line-height: 1.15; color: #444; }
-  .ms-env-text > div { line-height: 1.2; }
-  .ms-env-text > div + div { margin-top: 1px; }
-  .ms-grade-box { border: 1.5px solid #000; padding: 2px 10px; font-weight: 700; font-size: 12px; }
-  .ms-bottom-section { display: grid; grid-template-columns: 1fr 1fr; }
-  .ms-bottom-left { padding: 6px 8px; border-right: 1px solid #ccc; font-size: 9.5px; line-height: 1.25; }
-  .ms-bottom-left > div { line-height: 1.2; }
-  .ms-bottom-left > div + div { margin-top: 1px; }
-  .ms-bottom-right { padding: 6px 8px; font-size: 9.5px; }
-  .ms-bottom-right .ms-bi-stack { align-items: center; text-align: center; }
-  .ms-sign-area { min-height: 50px; display: flex; align-items: flex-end; justify-content: center; margin-top: 6px; }
-  .ms-sign-text { font-size: 9px; text-align: center; color: #333; }
-  .ms-sign-name { font-size: 11px; font-style: italic; font-family: 'Noto Sans Devanagari', sans-serif; }
-  .ms-secretary-block {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
-    margin-top: 8px;
+.ms-nic-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ms-nic-canvas {
+  box-sizing: border-box;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  background: #D0DFF6;
+  padding: 14px 16px 22px 16px;
+  border: 2px solid #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #000;
+}
+
+.ms-nic-canvas *,
+.ms-nic-canvas *::before,
+.ms-nic-canvas *::after {
+  box-sizing: border-box;
+}
+
+.ms-nic-canvas .header {
+  width: 100%;
+  height: 58px;
+  background: #4C88F8;
+  border: 1px solid #A8A8A8;
+  position: relative;
+}
+
+.ms-nic-canvas .header .title {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 18px;
+}
+
+.ms-nic-canvas .header .subtitle {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 18px;
+}
+
+.ms-nic-canvas .header .brought-by {
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+  height: 14px;
+  line-height: 14px;
+  background: #FFEEDD;
+  font-size: 11px;
+  font-weight: 700;
+  color: #000000;
+  padding: 0 6px;
+  white-space: nowrap;
+}
+
+.ms-nic-canvas .exam-heading {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 18px;
+}
+
+.ms-nic-canvas .exam-heading sup {
+  font-size: 10px;
+}
+
+.ms-nic-canvas .meta-table {
+  width: 100%;
+  margin-top: 1px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 11px;
+  border: 1px solid #6B6B6B;
+}
+
+.ms-nic-canvas .meta-table th {
+  background: transparent;
+  height: 22px;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #6B6B6B;
+  white-space: nowrap;
+  color: #000;
+}
+
+.ms-nic-canvas .meta-table td {
+  height: 22px;
+  background: transparent;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #6B6B6B;
+  color: #000;
+}
+
+.ms-nic-canvas .student-info-wrap {
+  width: 58.2%;
+  margin-left: 21%;
+  margin-top: 1px;
+}
+
+.ms-nic-canvas .student-info {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border: 1px solid #6B6B6B;
+  font-size: 11px;
+}
+
+.ms-nic-canvas .student-info td.label {
+  display: table-cell;
+  width: 31.4%;
+  height: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: left;
+  padding-left: 4px;
+  background: #FBFFFF;
+  border: 1px solid #6B6B6B;
+  color: #000;
+}
+
+.ms-nic-canvas .student-info td.value {
+  height: 18px;
+  font-weight: 400;
+  text-align: left;
+  padding-left: 5px;
+  background: #FFFFFF;
+  border: 1px solid #6B6B6B;
+  color: #000;
+}
+
+.ms-nic-canvas .result-status {
+  margin-left: 4.3%;
+  margin-top: 17px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #FF0000;
+  line-height: 16px;
+  text-align: left;
+}
+
+.ms-nic-canvas .marks-wrap {
+  width: 90.7%;
+  margin-left: 5.2%;
+  margin-top: 2px;
+}
+
+.ms-nic-canvas .marks-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border: 1px solid #6B6B6B;
+  font-size: 11px;
+}
+
+.ms-nic-canvas .marks-table th {
+  height: 22px;
+  border: 1px solid #6B6B6B;
+  font-weight: 700;
+  font-size: 11px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: #000;
+}
+
+.ms-nic-canvas .marks-table td {
+  height: 18px;
+  background: #FFF1E4;
+  border: 1px solid #6B6B6B;
+  padding: 2px 4px;
+  vertical-align: middle;
+  color: #000;
+}
+
+.ms-nic-canvas .marks-table td.code { text-align: center; }
+.ms-nic-canvas .marks-table td.name { text-align: left; }
+.ms-nic-canvas .marks-table td.name.blue { color: #000; font-weight: 700; }
+.ms-nic-canvas .marks-table td.theory { text-align: right; }
+.ms-nic-canvas .marks-table td.practical { text-align: right; }
+.ms-nic-canvas .marks-table td.total { text-align: right; }
+.ms-nic-canvas .marks-table td.remark { text-align: center; }
+
+.ms-nic-canvas .marks-table .grand-total td {
+  height: 22px;
+  background: transparent;
+  border: 1px solid #6B6B6B;
+  font-weight: 700;
+  font-size: 13px;
+  text-align: center;
+  padding-right: 5px;
+}
+
+.ms-nic-canvas .marks-table .empty-row td {
+  height: 14px;
+  background: #FFF1E4;
+  border: 1px solid #6B6B6B;
+}
+
+.ms-nic-canvas .additional-info {
+  width: 90.7%;
+  margin-left: 4%;
+  margin-top: 15px;
+  background: #FFFFFF;
+  padding: 6px 8px 5px 8px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 16px;
+  text-align: left;
+}
+
+.ms-nic-canvas .additional-info u { text-decoration: underline; }
+
+.ms-nic-canvas .additional-info .hindi-note {
+  margin-top: 5px;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.ms-nic-canvas .retotal-notice {
+  width: 84.8%;
+  margin-left: 5.5%;
+  margin-top: 11px;
+  min-height: 43px;
+  background: #9ABAF7;
+  border: 2px solid #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3px 8px;
+}
+
+.ms-nic-canvas .retotal-notice p {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 15px;
+}
+
+.ms-nic-canvas .disclaimer-line {
+  margin-top: 3px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FF0000;
+  line-height: 15px;
+}
+
+.ms-nic-canvas .links-section {
+  margin-top: 1px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.ms-nic-canvas .links-section a {
+  color: #0000EE;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.ms-nic-canvas .warning-box {
+  width: 100%;
+  margin-top: 3px;
+  background: #4C88F8;
+  border: 1px solid #6B6B6B;
+  padding: 5px 7px 6px 7px;
+  font-size: 10px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 14px;
+  text-align: left;
+}
+
+.ms-nic-canvas .warning-box b { font-weight: 700; }
+
+.ms-nic-canvas .footer {
+  margin-top: 11px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 15px;
+  background: transparent;
+  padding: 0;
+  border: 0;
+}
+
+@media (max-width: 620px) {
+  .ms-nic-canvas {
+    padding: 8px 6px 14px;
   }
-  .ms-secretary-sign {
-    display: block;
-    height: 48px;
-    width: auto;
-    min-width: 90px;
-    max-width: 160px;
-    object-fit: contain;
-    background: transparent;
-  }
-  .ms-secretary-label {
-    text-align: center;
-    font-family: 'Noto Sans Devanagari', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    border-top: 1px solid #000;
-    padding-top: 3px;
-    min-width: 120px;
-  }
-  .ms-proficiency { padding: 5px 8px; border-top: 1px solid #ccc; font-size: 9px; }
-  .ms-logo-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-    width: 300px;
-    max-width: 72%;
-    pointer-events: none;
-    opacity: 0.05;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ms-logo-watermark img {
+
+  .ms-nic-canvas .student-info-wrap,
+  .ms-nic-canvas .marks-wrap,
+  .ms-nic-canvas .additional-info,
+  .ms-nic-canvas .retotal-notice {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    margin-left: 0;
+  }
+
+  .ms-nic-canvas .header .brought-by {
+    position: static;
     display: block;
+    text-align: right;
+    margin: 24px 4px 0 0;
   }
-  .ms-inner-content { position: relative; z-index: 1; }
-  .ms-header-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 5px; padding: 0 4px; }
-  .ms-th-hi { font-family: 'Noto Sans Devanagari', sans-serif; }
-  .ms-bonus-row { font-size: 9px; color: #8B0000; padding: 2px 8px; border-bottom: 1px solid #ccc; background: #fffef5; font-weight: 600; }
-  .ms-date-stamp { font-size: 10px; font-weight: 700; color: #000; }
-  .ms-bottom-ids { display: flex; justify-content: space-between; padding: 3px 8px; border-top: 1px solid #ccc; font-size: 10px; font-weight: 700; background: #f5f0e0; }
-  .ms-regular-note { font-size: 9px; color: #444; margin-bottom: 3px; font-style: italic; }
-  table.ms-marks-table .th-hi {
-    font-family: 'Noto Sans Devanagari', sans-serif;
-    display: block;
-    font-size: 8.5px;
-    line-height: 3.1;
-    margin: 0;
-  }
-  table.ms-marks-table .th-en { display: block; font-size: 8.5px; line-height: 1.2; margin: 0; }
-  table.ms-marks-table thead th .ms-th-label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    line-height: 1.2;
-  }
-  table.ms-marks-table thead th[rowspan="2"] { vertical-align: middle; }
-  table.ms-marks-table thead th { line-height: 1.1; padding: 2px 3px; }
+}
