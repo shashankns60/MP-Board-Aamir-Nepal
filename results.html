@@ -334,7 +334,12 @@ form {
     <script src="resources/assets/owl-carousel/js/owl.carousel.min.html"></script>
     <script src="resources/js/modernizr.custom.html"></script>
     <script src="resources/js/custom.html"></script>
-    <script>window.MPBSE_API_BASE = "http://127.0.0.1:8000";</script>
+    <script>
+      window.MPBSE_API_BASE =
+        /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)
+          ? "http://127.0.0.1:8000"
+          : window.location.origin;
+    </script>
     <script src="resources/js/results.js?v=nic"></script>
 </body>
 

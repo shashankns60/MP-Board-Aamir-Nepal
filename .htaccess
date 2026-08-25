@@ -1,1 +1,9 @@
 ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Send admin panel + API requests to Laravel
+  RewriteRule ^admin(/.*)?$ backend/public/index.php [L,QSA]
+  RewriteRule ^api(/.*)?$ backend/public/index.php [L,QSA]
+</IfModule>
