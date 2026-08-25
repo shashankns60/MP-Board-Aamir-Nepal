@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ImportController;
 use App\Http\Controllers\Admin\StudentResultController;
@@ -16,6 +17,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/password', [ChangePasswordController::class, 'edit'])->name('password.edit');
+    Route::put('/password', [ChangePasswordController::class, 'update'])->name('password.update');
     Route::get('/students/export', [StudentResultController::class, 'export'])->name('students.export');
     Route::resource('students', StudentResultController::class)->except(['show']);
     Route::get('/import', [ImportController::class, 'create'])->name('import.create');

@@ -68,6 +68,9 @@
             <a class="nav-link {{ request()->routeIs('admin.import.*') ? 'active' : '' }}" href="{{ route('admin.import.create') }}">
                 <i class="bi bi-upload me-2"></i> Bulk Upload
             </a>
+            <a class="nav-link {{ request()->routeIs('admin.password.*') ? 'active' : '' }}" href="{{ route('admin.password.edit') }}">
+                <i class="bi bi-shield-lock me-2"></i> Change Password
+            </a>
         </nav>
         <form method="POST" action="{{ route('admin.logout') }}" class="p-3 border-top border-secondary-subtle">
             @csrf
@@ -86,6 +89,7 @@
             <div class="text-end">
                 <div class="fw-semibold">{{ auth()->user()->name }}</div>
                 <div class="text-muted small">SUPER ADMIN</div>
+                <a href="{{ route('admin.password.edit') }}" class="small text-decoration-none">Change password</a>
             </div>
         </div>
 
